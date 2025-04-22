@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bunaaaaaaaa</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <p>eu iubi puiu meu</p>
+  <div id="markdown-container"></div>
+
+  <script>
+    fetch('https://raw.githubusercontent.com/username/repo/main/README.md')
+      .then(res => res.text())
+      .then(md => {
+        document.getElementById('markdown-container').innerHTML = marked(md);
+      });
+  </script>
 </body>
 </html>
