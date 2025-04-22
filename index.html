@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Markdown Viewer</title>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- marked.js for Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- MathJax config -->
   <script>
-    // Let MathJax process dollar signs as math
     window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
       svg: { fontCache: 'global' }
     };
   </script>
+
+  <!-- MathJax script (deferred) -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
 </head>
 <body>
@@ -21,7 +27,13 @@
     fetch('https://raw.githubusercontent.com/Sueyoubeth/Atestat/refs/heads/main/maincpp.md')
       .then(res => res.text())
       .then(markdown => {
-        document.getElementById('markdown-content').innerHTML = marked.parse(markdown);
+        const html = marked.parse(markdown);
+        document.getElementById('markdown-content').innerHTML = html;
+
+        // ✅ Tell MathJax to reprocess the page after inserting HTML
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
       });
   </script>
 </body>
