@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Markdown Viewer</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <div id="markdown-container"></div>
+  <h1>Markdown Content</h1>
+  <div id="markdown-content"></div>
 
-  <a href="https://github.com/Sueyoubeth/Atestat/blob/main/README.md" target="_blank">View Markdown</a>
-
+  <script>
+    fetch('https://raw.githubusercontent.com/username/repo/main/README.md')
+      .then(res => res.text())
+      .then(markdown => {
+        document.getElementById('markdown-content').innerHTML = marked.parse(markdown);
+      });
+  </script>
 </body>
 </html>
