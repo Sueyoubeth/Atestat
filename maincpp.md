@@ -15,7 +15,7 @@ Aflați lungimea minimă a unui drum care conțime maxim două culori distincte,
 
 Rezolvare:
 
-
+lol
 
 
 
