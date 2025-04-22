@@ -10,7 +10,7 @@
   <div id="markdown-content"></div>
 
   <script>
-    fetch('https://raw.githubusercontent.com/username/repo/main/README.md')
+    fetch('https://raw.githubusercontent.com/Sueyoubeth/Atestat/refs/heads/main/README.md')
       .then(res => res.text())
       .then(markdown => {
         document.getElementById('markdown-content').innerHTML = marked.parse(markdown);
