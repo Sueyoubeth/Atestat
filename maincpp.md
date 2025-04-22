@@ -8,14 +8,14 @@ Buna ziua! Mă numesc Ionescu Matei, și în ceea ce urmează a fi lucrarea mea 
 # Prisonbreak (ONI $2025$ clasele $11-12$)
 
 Enunt:
-Se dă un graf neorientat cu $N$ noduri, fiecarei muchii fiind asociat un cost. Fiecare nod are o culoare un număr natural $\leq N$. $\newline$
+Se dă un graf neorientat cu $N$ noduri, fiecarei muchii fiind asociat un cost. Fiecare nod are o culoare, reprezentată printr-un număr natural $\leq N$. $\newline$
 
 Cerință:
 Aflați lungimea minimă a unui drum care conțime maxim două culori distincte, cate asemenea drumuri exista și un drum posibil.
 
 Rezolvare:
 
-lol
+
 
 
 
