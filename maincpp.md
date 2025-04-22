@@ -1,5 +1,5 @@
 <h2 style="text-align:center;">Lucrare de Atestat</h2>
-<h3 style="margin-right: 10vw;"> Ionescu Matei </h3>
+<h3 style="margin-right: 100vw;"> Ionescu Matei </h3>
 
 # Introducere
 
