@@ -38,4 +38,18 @@ unde $D$ face parte din input.
 
 ### Rezolvare ($71$ puncte)
 
-Vom sorta festivalele după timp și vom face **dp** (programare dinamică). Avem: $dp_i = \displaystyle MAX_{j = 0}^{i-1} dp_j + S_i$ , asta dacă cele două festivale îndeplinesc condițiile date mai sus.
+Vom sorta festivalele după timp și vom face **dp** (programare dinamică). Avem: $dp_i = \displaystyle MAX_{j = 0}^{i-1} dp_j + S_i$ , asta dacă cele două festivale îndeplinesc condițiile date mai sus. $\newline$
+O solutie care calculează dp-ul în $N^2$ ia undeva la $34$ puncte, iar pentru alte $34$ puncte vom expluata subtaskul unde $D = 10^9$.$\newline$
+$D = 10^9$, de unde rezultă că restricția $|X_i - X_j| \leq D$ devine absolut irelevantă (diferența lor e oricum mai mica ca $10^9$). Și atunci ne rămâne doar ultima restricție. $\newline$.
+* $X_i > X_j$
+
+$|X_i - X_j| \leq T_j - T_i \rightarrow X_i - X_j \leq T_i - T_j \rightarrow X_i - T_i \leq X_j - T_j$.
+
+*  $X_i \leq  X_j$
+
+$|X_i - X_j| \leq T_j - T_i \rightarrow X_j - X_i \leq T_i - T_j \rightarrow X_j +  T_j \leq X_i + T_i$.
+
+În ambele cazuri, ne vom forma puncte de genul $(X_i, X_i - T_i)$, respectiv $(X_i, X_i + T_i)$. De unde deducem că punctul $j$ influențează punctul $i$ doar dacă este strict mai mic sau strict mai mare ca punctul $i$. (adică $X_j < X_i$ și $X_i - T_i \leq X_j - T_j$, sau invers) $\newline$
+Atunci noi trebuie să suportăm update-uri de genul : "adaugă punctul $i$ cu un cost $x$", și queriuri de tipul: "află costul maxim dintr-o submatrice", lucruri care pot fi implementate folosind Arbori indexati binar 2D (sau **aib2D**). Pentru că memoria e prea mare, trebuie sa facem niște trucuri pentru a o reduce la $N \cdot log^2 N$.
+
+
