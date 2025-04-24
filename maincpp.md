@@ -163,68 +163,55 @@ Să se calculeze suma costurilor pe toate jocurile posibile distincte.
 
 ### Soluție
 
-Dacă costul unui joc era doar $b$, unde $b$ este numărul de monștri eliminați cu toate cele $K$ abilități, atunci am putea să analizăm contribuția fiecărui monstru în parte și să le adunăm. În acest caz, contribuția monstrului $i$ este $i^k$, rezultatul fiind:
+Dacă costul unui joc era doar $b$, unde $b$ este numărul de monștri eliminați cu toate cele $K$ abilități, atunci putem să vedem contribuția fiecărui monstru în parte și să le adunăm. În acest caz, contribuția monstrului $i$ este $i^k$, rezultatul fiind $\displaystyle \\sum_{i = 1}^{N} i^k$.
 
-$$ \displaystyle \sum_{i=1}^{N} i^k. $$
+Vom defini $dp_{i,j}$ ca fiind egal cu suma jocurilor dacă luăm în calcul doar primii $i$ monștri, iar răspunsul este calculat la puterea $j$. Evident, $dp_{i,1} = dp_{i-1,1} + i^k$. Observăm însă că $dp_{i,2}$ se poate scrie în felul următor:
 
-Vom defini $dp_{i,j}$ ca fiind egal cu suma jocurilor dacă luăm în calcul doar primii $i$ monștri, iar răspunsul este ridicat la puterea $j$. Evident, $dp_{i,1} = dp_{i-1,1} + i^k$. Observăm însă că $dp_{i,2}$ se poate scrie astfel:
+$$ 1^2 \\cdot (i^k - (i - 1)^k) + 2 \\cdot ((i-1)^k - (i-2)^k) + \\dots + i^2 \\cdot 1^k $$
 
-$$ 1^2 \cdot (i^k - (i-1)^k) + 2^2 \cdot ((i-1)^k - (i-2)^k) + \dots + i^2 \cdot 1^k. $$
+iar când facem tranziția la $i + 1$:
 
-Iar când facem tranziția la $i + 1$:
-
-$$ (1+1)^2 \cdot (i^k - (i-1)^k) + (2+1)^2 \cdot ((i-1)^k - (i-2)^k) + \dots + (j+1)^2 \cdot ((i-j+1)^k - (i-j)^k) + \dots + (i+1)^2 \cdot 1^k. $$
+$$ (1 + 1)^2 \\cdot (i^k - (i - 1)^k) + (2 + 1)  \\cdot ((i-1)^k - (i-2)^k) + \\dots + (j + 1)^2 \\cdot ((i - j + 1)^k - (i - j)^k) + \\dots + (i + 1) \\cdot 1^k $$
 
 Desfacem parantezele și obținem:
 
-$$ \displaystyle \sum_{j=1}^{i} (i-j+1)^2 \cdot (j^k - (j-1)^k) + 2 \cdot (i-j+1) \cdot (j^k - (j-1)^k) + (j^k - (j-1)^k), $$
+$$ \\displaystyle \\sum_{j = 1}^{i} (i - j + 1)^2 \\cdot (j^k - (j-1)^k) + 2 \\cdot (i - j + 1) \\cdot (j^k - (j-1)^k) + (j^k - (j-1)^k) $$
 
-care este efectiv:
+care este efectiv $dp_{i-1,2} + 2 \\cdot dp_{i-1,1} + (i - 1)^k$, iar când adăugăm monstrul $i$, obținem $dp_{i-1,2} + 2 \\cdot dp_{i-1,1} + i^k$. Deci $dp_{i,2} = dp_{i-1,2} + 2 \\cdot dp_{i-1,1} + i^k$.
+Dacă desfacem $dp_{n,2}$ vedem că este egal cu suma: $2n \\cdot \\displaystyle \\sum_{i=1}^{N} i^k - \\displaystyle \\sum_{i = 1}^{N} i^{k+1}$, care este de fapt și rezultatul nostru.
 
-$$ dp_{i-1,2} + 2 \cdot dp_{i-1,1} + (i-1)^k. $$
+Pentru a calcula sumele, datorită faptului că $N$ este prea mare, ne vom folosi de polinomul de interpolare al lui **Lagrange**, care poate să afle valoarea unui polinom în oricare punct (dacă știm valorile polinomului evaluate în $k + 1$ puncte, unde $k$ este gradul polinomului).
 
-Iar când adăugăm monstrul $i$, obținem:
-
-$$ dp_{i,2} = dp_{i-1,2} + 2 \cdot dp_{i-1,1} + i^k. $$
-
-Dacă desfacem $dp_{N,2}$, observăm că este egal cu:
-
-$$ 2N \cdot \displaystyle \sum_{i=1}^{N} i^k - \displaystyle \sum_{i=1}^{N} i^{k+1}, $$
-
-care este, de fapt, și rezultatul nostru.
-
-Pentru a calcula sumele, deoarece $N$ este prea mare, ne vom folosi de polinomul de interpolare al lui **Lagrange**, care poate determina valoarea unui polinom într-un punct dat, dacă știm valorile polinomului evaluate în $k+1$ puncte, unde $k$ este gradul polinomului.
-
-### Cum interpolăm $i^k$ în $O(K \cdot \log)$
+### Cum interpolăm $i^k$ în $O(K \\cdot \\log)$
 
 ```cpp
 Mint interpolate(int k, ll n){
-    vector<Mint> f1(k + 3, 0);
+    vector<Mint> f1(k + 3,0);
 
-    for (int i = 1; i <= k + 2; i++){
-        f1[i] = f1[i-1] + fp(i, k);
+    for(int i = 1; i <= k + 2; i++){
+        f1[i] = f1[i-1] + fp(i,k);
     }
-    if (n <= k + 2) return f1[n];
+    if(n <= k + 2) return f1[n];
 
     Mint ans = 0;
-
+    
     vector<Mint> p1(k + 3), p2(k + 3), f(k + 3), rf(k + 3);
     p1[0] = n-0;
     f[0] = 1;
     rf[0] = 1;
-    for (int i = 1; i <= k + 2; i++){
+    for(int i = 1; i <= k + 2; i++){
         p1[i] = p1[i-1] * (n - i);
         f[i] = f[i-1] * i;
         rf[i] = rf[i-1] * (mod - i);
-    }
+    } 
     p2[k + 2] = (n - k - 2);
-    for (int i = k + 1; i >= 0; i--){
+    for(int i = k + 1; i >= 0; i--){
         p2[i] = p2[i + 1] * (n - i);
     }
-    for (int i = 0; i <= k + 2; i++){
+    for(int i = 0; i <= k + 2; i++){
         Mint sus = (i == 0 ? 1 : p1[i-1]) * (i == k + 2 ? 1 : p2[i + 1]);
         Mint jos = f[i] * rf[k + 2 - i];
-        ans = ans + f1[i] * sus / jos;
+        ans = ans + f1[i] * sus  / jos;
     }
     return ans;
 }
