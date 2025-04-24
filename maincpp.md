@@ -20,10 +20,8 @@ Trebuie doar să găsim acele perechi de culori pentru care știm sigur că avem
 Fie $u$ un vecin al nodului $1$, și $v$ un vecin al nodului $u$ ($v \neq 1$). Atunci $(color_u, color_v)$ este o pereche legită. Ne mai trebuie doar perechile de noduri $(x,y)$ cu proprietatea că există un drum de la $1$ la $x$, unde nodurile au aceeași culoare cu $x$,  și $color_x \neq color_y$. Dacă sortam perechile deja selectate și eliminăm dublicatele (perechea $(a,b)$ = $(b,a)$ ), atunci o soluție care va lua punctaj maxim este: iterăm prin fiecare pereche; facem un algoritm de tip **dijkstra** din nodul $1$, calculând în același timp și câte drumuri avem. $\newline$
 
 Algoritmul rulează în $O(N log(N) \cdot \text{nr perechi})$. După timpul de execuție al programului, deducem că numarul de perechi este maxim undeva la $100$ (poate sunt testele proaste).
-
 <br>
 <br>
-
 ## #2 Festival (ONI $2025$ clasele $11-12$)
 
 ### Enunț
@@ -53,10 +51,8 @@ $|X_i - X_j| \leq T_j - T_i \rightarrow X_j - X_i \leq T_i - T_j \rightarrow X_j
 
 În ambele cazuri, ne vom forma puncte de genul $(X_i, X_i - T_i)$, respectiv $(X_i, X_i + T_i)$. De unde deducem că punctul $j$ influențează punctul $i$ doar dacă este strict mai mic sau strict mai mare ca punctul $i$. (adică $X_j < X_i$ și $X_i - T_i \leq X_j - T_j$, sau invers) $\newline$
 Atunci noi trebuie să suportăm update-uri de genul : "adaugă punctul $i$ cu un cost $x$", și queriuri de tipul: "află costul maxim dintr-o submatrice", lucruri care pot fi implementate folosind Arbori indexati binar 2D (sau **aib2D**). Pentru că memoria e prea mare, trebuie sa facem niște trucuri pentru a o reduce la $N \cdot log^2 N$.
-
 <br>
 <br> 
-
 ## #3 F. Maximize Nor (Codeforces 1019 DIV2)
 
 ### Enunț
