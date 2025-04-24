@@ -3,7 +3,7 @@
 
 # Introducere
 
-Buna ziua! Mă numesc Ionescu Matei, și în ceea ce urmează a fi lucrarea mea de atestat, vă voi prezenta **top 10 probleme** pe care le-am rezolvat pe parcursul evoluției mele la informatică.
+  Buna ziua! Mă numesc Ionescu Matei, și în ceea ce urmează a fi lucrarea mea de atestat, vă voi prezenta **top 10 probleme** pe care le-am rezolvat pe parcursul evoluției mele la informatică.
 
 ## Prisonbreak (ONI $2025$ clasele $11-12$)
 
