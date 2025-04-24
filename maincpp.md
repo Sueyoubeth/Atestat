@@ -150,3 +150,100 @@ Aflați mulțimea de elemente care sunt median pentru minim un interval de lungi
 Dacă vom nota cu $-1$ elementele care sunt mai mici decât $v_i$, iar cu $1$ elementele care sunt mai mari decât $v_i$, atunci problema se reduce la: „află dacă există un interval care acoperă poziția $i$ și are suma $0$”. În general, problema astfel obținută este destul de dificil de rezolvat pe restricțiile impuse, însă avantajul nostru constă în faptul că valorile sunt fie $-1$, fie $1$.
 
 Dacă notăm $sp_i$ ca fiind suma primelor $i$ elemente, atunci $|sp_i - sp_{i-1}| \leq 1$, iar asta implică faptul că, între două poziții $i$ și $j$, pentru orice $c \in [sp_i, sp_j]$, există o poziție $p$ pentru care $sp_p = c$. Pentru a verifica dacă există $l < i \leq r$ cu $sp_l = sp_r$, vom lua intervalele $[min(sp_0, \dots , sp_{i-1}), max(sp_0, \dots, sp_{i-1})]$ și $[min(sp_i, \dots , sp_N), max(sp_i, \dots, sp_N)]$ și vom verifica dacă se intersectează. Iar dacă nu uităm să tratăm și restricția referitoare la lungimea intervalului, obținem o soluție în $O(N \cdot k \log)$ cu ajutorul unor arbori de intervale, care se poate reduce la $O(N \cdot k + N \cdot \log)$.
+<br>
+<br>
+## #6 Almost Video Game III (IIOT 2024-2025 Round II)
+### Enunț
+
+Într-un joc video sunt $N$ monștri care trebuie eliminați folosind $K$ abilități. Runda $i$ constă în selectarea unei mulțimi de abilități neactivate și activarea lor, urmând să eliminăm monstrul $i$ cu abilitățile selectate. La final, costul jocului este $b^2$, unde $b$ este numărul de monștri eliminați folosind toate cele $K$ abilități.
+
+### Cerință
+
+Să se calculeze suma costurilor pe toate jocurile posibile distincte.
+
+### Soluție
+
+Dacă costul unui joc era doar $b$, unde $b$ este numărul de monștri eliminați cu toate cele $K$ abilități, atunci am putea să analizăm contribuția fiecărui monstru în parte și să le adunăm. În acest caz, contribuția monstrului $i$ este $i^k$, rezultatul fiind:
+
+$$ \displaystyle \sum_{i=1}^{N} i^k. $$
+
+Vom defini $dp_{i,j}$ ca fiind egal cu suma jocurilor dacă luăm în calcul doar primii $i$ monștri, iar răspunsul este ridicat la puterea $j$. Evident, $dp_{i,1} = dp_{i-1,1} + i^k$. Observăm însă că $dp_{i,2}$ se poate scrie astfel:
+
+$$ 1^2 \cdot (i^k - (i-1)^k) + 2^2 \cdot ((i-1)^k - (i-2)^k) + \dots + i^2 \cdot 1^k. $$
+
+Iar când facem tranziția la $i + 1$:
+
+$$ (1+1)^2 \cdot (i^k - (i-1)^k) + (2+1)^2 \cdot ((i-1)^k - (i-2)^k) + \dots + (j+1)^2 \cdot ((i-j+1)^k - (i-j)^k) + \dots + (i+1)^2 \cdot 1^k. $$
+
+Desfacem parantezele și obținem:
+
+$$ \displaystyle \sum_{j=1}^{i} (i-j+1)^2 \cdot (j^k - (j-1)^k) + 2 \cdot (i-j+1) \cdot (j^k - (j-1)^k) + (j^k - (j-1)^k), $$
+
+care este efectiv:
+
+$$ dp_{i-1,2} + 2 \cdot dp_{i-1,1} + (i-1)^k. $$
+
+Iar când adăugăm monstrul $i$, obținem:
+
+$$ dp_{i,2} = dp_{i-1,2} + 2 \cdot dp_{i-1,1} + i^k. $$
+
+Dacă desfacem $dp_{N,2}$, observăm că este egal cu:
+
+$$ 2N \cdot \displaystyle \sum_{i=1}^{N} i^k - \displaystyle \sum_{i=1}^{N} i^{k+1}, $$
+
+care este, de fapt, și rezultatul nostru.
+
+Pentru a calcula sumele, deoarece $N$ este prea mare, ne vom folosi de polinomul de interpolare al lui **Lagrange**, care poate determina valoarea unui polinom într-un punct dat, dacă știm valorile polinomului evaluate în $k+1$ puncte, unde $k$ este gradul polinomului.
+
+### Cum interpolăm $i^k$ în $O(K \cdot \log)$
+
+```cpp
+Mint interpolate(int k, ll n){
+    vector<Mint> f1(k + 3, 0);
+
+    for (int i = 1; i <= k + 2; i++){
+        f1[i] = f1[i-1] + fp(i, k);
+    }
+    if (n <= k + 2) return f1[n];
+
+    Mint ans = 0;
+
+    vector<Mint> p1(k + 3), p2(k + 3), f(k + 3), rf(k + 3);
+    p1[0] = n-0;
+    f[0] = 1;
+    rf[0] = 1;
+    for (int i = 1; i <= k + 2; i++){
+        p1[i] = p1[i-1] * (n - i);
+        f[i] = f[i-1] * i;
+        rf[i] = rf[i-1] * (mod - i);
+    }
+    p2[k + 2] = (n - k - 2);
+    for (int i = k + 1; i >= 0; i--){
+        p2[i] = p2[i + 1] * (n - i);
+    }
+    for (int i = 0; i <= k + 2; i++){
+        Mint sus = (i == 0 ? 1 : p1[i-1]) * (i == k + 2 ? 1 : p2[i + 1]);
+        Mint jos = f[i] * rf[k + 2 - i];
+        ans = ans + f1[i] * sus / jos;
+    }
+    return ans;
+}
+```
+
+Soluția finală:
+
+```cpp
+void solve(){
+    ll n, k;
+    cin >> n >> k >> mod;
+
+    Mint S1 = interpolate(k, n);
+    Mint S2 = interpolate(k + 1, n);
+
+    cout << S1 + S1 * n * 2 - S2 * 2;
+}
+```
+
+
+
+
