@@ -8,7 +8,9 @@ body {
 }
 
 
-
+p {
+  text-indent: 30px;
+}
 h1, h2, h3 {
   color: #333;
 }
