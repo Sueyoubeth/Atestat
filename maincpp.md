@@ -20,6 +20,7 @@ Trebuie doar să găsim acele perechi de culori pentru care știm sigur că avem
 Fie $u$ un vecin al nodului $1$, și $v$ un vecin al nodului $u$ ($v \neq 1$). Atunci $(color_u, color_v)$ este o pereche legită. Ne mai trebuie doar perechile de noduri $(x,y)$ cu proprietatea că există un drum de la $1$ la $x$, unde nodurile au aceeași culoare cu $x$,  și $color_x \neq color_y$. Dacă sortam perechile deja selectate și eliminăm dublicatele (perechea $(a,b)$ = $(b,a)$ ), atunci o soluție care va lua punctaj maxim este: iterăm prin fiecare pereche; facem un algoritm de tip **dijkstra** din nodul $1$, calculând în același timp și câte drumuri avem. $\newline$
 
 Algoritmul rulează în $O(N log(N) \cdot \text{nr perechi})$. După timpul de execuție al programului, deducem că numarul de perechi este maxim undeva la $100$ (poate sunt testele proaste).
+
 <br>
 <br>
 
