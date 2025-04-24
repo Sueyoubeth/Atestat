@@ -40,11 +40,11 @@ unde $D$ face parte din input.
 
 Vom sorta festivalele după timp și vom face **dp** (programare dinamică). Avem: $dp_i = \displaystyle MAX_{j = 0}^{i-1} dp_j + S_i$ , asta dacă cele două festivale îndeplinesc condițiile date mai sus. $\newline$
 O solutie care calculează dp-ul în $N^2$ ia undeva la $34$ puncte, iar pentru alte $34$ puncte vom expluata subtaskul unde $D = 10^9$ , de unde rezultă că restricția $|X_i - X_j| \leq D$ devine absolut irelevantă (diferența lor e oricum mai mica ca $10^9$). Și atunci ne rămâne doar ultima restricție. $\newline$.
-* $X_i > X_j$
+* Cazul când $X_i > X_j$
 
 $|X_i - X_j| \leq T_j - T_i \rightarrow X_i - X_j \leq T_i - T_j \rightarrow X_i - T_i \leq X_j - T_j$.
 
-*  $X_i \leq  X_j$
+* Cazul când $X_i \leq  X_j$
 
 $|X_i - X_j| \leq T_j - T_i \rightarrow X_j - X_i \leq T_i - T_j \rightarrow X_j +  T_j \leq X_i + T_i$.
 
