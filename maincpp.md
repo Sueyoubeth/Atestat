@@ -51,4 +51,29 @@ $|X_i - X_j| \leq T_j - T_i \rightarrow X_j - X_i \leq T_i - T_j \rightarrow X_j
 În ambele cazuri, ne vom forma puncte de genul $(X_i, X_i - T_i)$, respectiv $(X_i, X_i + T_i)$. De unde deducem că punctul $j$ influențează punctul $i$ doar dacă este strict mai mic sau strict mai mare ca punctul $i$. (adică $X_j < X_i$ și $X_i - T_i \leq X_j - T_j$, sau invers) $\newline$
 Atunci noi trebuie să suportăm update-uri de genul : "adaugă punctul $i$ cu un cost $x$", și queriuri de tipul: "află costul maxim dintr-o submatrice", lucruri care pot fi implementate folosind Arbori indexati binar 2D (sau **aib2D**). Pentru că memoria e prea mare, trebuie sa facem niște trucuri pentru a o reduce la $N \cdot log^2 N$.
 
+## #3 F. Maximize Nor (Codeforces 1019 DIV2)
 
+### Enunț
+
+Se definește operația **nor** între două numere ca fiind operația **or** dar negatâ. Exemplu $2$ **nor** $6$ = $9$, dacă luăm în calcul doar primii $4$ biți.
+
+### Cerință
+
+Se dă un vector $v$ cu $N$ elemente și un număr $k$. Să se afle pentru fiecare poziție $i$ ( $1 \leq i \leq N$ ) care este suma maximă **nor** al unui inteval care acoperă complet poziția $i$, dacâ luăm în calcul doar primii $k$ biți din fiecare număr.
+
+### Soluție
+
+Pentru un bit anume, fie el $b$, contribuția acestuia asupra intervalului $[l,r]$ este dată de ultima poziție din intervalul ales care are bitul $b$ setat. 
+
+*Exemplu operații **nor***
+| **nor**  |  $0$  | $1$ | 
+|--------|---------|-----|
+| $0$ |  $1$ | $0$| 
+| $1$ |  $0$ | $0$| 
+
+Observăm că indiferent de ce valoare are celălalt bit, dacă facem operația **nor** cu un bit setat, rezultatul este mereu 0. De aici rezultă faptul că, bitul $b$ va aparea în suma finală pentru intervalul $[l,r]$ dacă:
+* bitul $b$ nu apare deloc : $l$ și $r$ au parități distincte
+* ultima apariție a lui $b$ este difertă de $l$ : este un număr impar de $0$ - uri după ultimul $1$
+* ultima apariție a lui $b$ este egală cu $l$ : $l$ și $r$ au aceeași paritate.
+
+Observația crucială este că, dacă ne fixăm capătul drept al intervalulul, atunci suma **nor** pe toate intervalele cu capătul fixat în $r$ se schimbă de maxim $O(k)$ ori, fapt ce reiese din condițiile de existență de mai sus. Atunci, o soluție care va lua verdictul de **accepted** implică reținerea propriu-zisă a sumelor **nor** distincte asupra tuturor intervalelor care se termină pe poziția $i$, permițându-ne să actualizăm maximele cu ajutorul unui **arbore de intevale**. Soluția finală are o complexitate de aproximativ $O(N \cdot k log)$.
