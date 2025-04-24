@@ -55,7 +55,7 @@ Atunci noi trebuie să suportăm update-uri de genul : "adaugă punctul $i$ cu u
 
 ### Enunț
 
-Se definește operația **nor** între două numere ca fiind operația **or** dar negatâ. Exemplu $2$ **nor** $6$ = $9$, dacă luăm în calcul doar primii $4$ biți.
+Se definește operația **nor** între două numere ca fiind operația **or** dar negată. Exemplu $2$ **nor** $6$ = $9$, dacă luăm în calcul doar primii $4$ biți.
 
 ### Cerință
 
