@@ -133,3 +133,20 @@ void solve(){
     }
 }
 ```
+<br>
+<br>
+
+## #5 Sonde (LOT Seniori 2023)
+
+### Enunț
+Se dă un vector $v$ cu $N$ elemente și un număr $K$. Toate elementele sunt **distincte**
+
+### Cerință
+
+Aflați mulțimea de elemente care sunt median pentru minim un interval de lungime **impară** și mai mare sau egală cu $K$.
+
+### Soluție
+
+Dacă vom nota cu $-1$ elementele care sunt mai mici  ca $v_i$, iar cu $1$ elementele care sunt mai mari ca $v_i$, atunci problema se rezumă la : "află dacă există un interval care acoperă poziția $i$ și are suma $0$". Pe caz general, problema rezultată este destul de grea de rezolvat pe restricțiile impuse, însă, avantajul nostru este dat de faptul că valorile sunt fie $-1$ sau $1$.
+
+Dacă ne notăm $sp_i$ ca fiind suma primelor $i$ elemente, atunci, $|sp_i - sp_{i-1}| \leq 1$, și asta implică faptul că, între $2$ poziții, $i$ și $j$, pentru oricare $c \in [sp_i, sp_j]$ există o poziție $p$ pentru care $sp_p = c$. Pentru a verifica dacă există $l <  i \leq r$ cu $sp_l = sp_r$, vom lua intervalel $[min(sp_0, \dots , sp_{i-1}), max(sp_0,\dots,sp_{i-1}]$ și $[min(sp_i, \dots , sp_{N}), max(sp_i,\dots,sp_{N}]$ și vom vedea dacă se intersectează. Și dacă nu uităm să tratăm restricția referitoare la lungimea intervalului, obținem o soluție în $O(N \cdot k log)$ cu ajutorul unor **abori de intervale**, care se poate reduce la $O(N \cdot k + N \cdot log)$.
