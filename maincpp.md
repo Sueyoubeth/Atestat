@@ -71,7 +71,7 @@ Pentru un bit anume, fie el $b$, contribuția acestuia asupra intervalului $[l,r
 | $0$ |  $1$ | $0$| 
 | $1$ |  $0$ | $0$| 
 
-Observăm că indiferent de ce valoare are celălalt bit, dacă facem operația **nor** cu un bit setat, rezultatul este mereu 0. De aici rezultă faptul că, bitul $b$ va aparea în suma finală pentru intervalul $[l,r]$ dacă:
+Observăm că, indiferent de ce valoare are celălalt bit, dacă facem operația **nor** cu un bit setat, rezultatul este mereu 0. De aici rezultă faptul că, bitul $b$ va aparea în suma finală pentru intervalul $[l,r]$ dacă:
 * bitul $b$ nu apare deloc : $l$ și $r$ au parități distincte
 * ultima apariție a lui $b$ este difertă de $l$ : este un număr impar de $0$ - uri după ultimul $1$
 * ultima apariție a lui $b$ este egală cu $l$ : $l$ și $r$ au aceeași paritate.
