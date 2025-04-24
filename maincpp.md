@@ -79,3 +79,57 @@ Observăm că, indiferent de ce valoare are celălalt bit, dacă facem operația
 * ultima apariție a lui $b$ este egală cu $l$ : $l$ și $r$ au aceeași paritate.
 
 Observația crucială este că, dacă ne fixăm capătul drept al intervalulul, atunci suma **nor** pe toate intervalele cu capătul fixat în $r$ se schimbă de maxim $O(k)$ ori, fapt ce reiese din condițiile de existență de mai sus. Atunci, o soluție care va lua verdictul de **accepted** implică reținerea propriu-zisă a sumelor **nor** distincte asupra tuturor intervalelor care se termină pe poziția $i$, permițându-ne să actualizăm maximele cu ajutorul unui **arbore de intevale**. Soluția finală are o complexitate de aproximativ $O(N \cdot k log)$.
+<br>
+<br>
+## #4 Nogcd (LOT Seniori 2017)
+
+### Enunț
+
+Se dă un graf conex cu $N$ noduri și $M$ muchii.
+
+### Cerință
+
+Trebuie să etichetăm fiecare muchie cu un număr natural de la $1$ la $M$, astfel încât muchiile să aibă etichete diferite, iar pentru fiecare nod cu grad mai mare ca $1$, **c.m.m.d.c**-ul etichetelor muchiilor incidente trebuie să fie $1$.
+
+### Soluție
+
+Voi nota  **c.m.m.d.c** cu **gcd**. Știm că $gcd(a,b)  \ \ = \ \  gcd(a,a-b)$, pentru oricare $a > b$, de unde deducem că $gcd(a + 1, a) \ \ = \ \  gcd(a + 1, 1)  \ \ =  \ \ 1$. Acest lucru ne motivează să punem cât mai multe etichete consecutive cu putință. Putem să realizăm asta cu un simplu **dfs**.
+
+### Code c++
+```cpp
+void solve(){
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> liste(n + 1);
+    map<pair<int,int>, int>mp;
+
+    for(int i = 1; i <= m; i++){
+        int u,v;
+        cin >> u >> v;
+        liste[u].push_back(v);
+        liste[v].push_back(u);
+    }
+    
+    vector<int> ans;
+    int cnt = 0;
+    vector<int> viz(n + 1);
+    function<void(int)> dfs = [&](int nod){
+        viz[nod] = 1;
+        for(auto i : liste[nod]){
+            if(mp[{min(i,nod), max(i,nod)}] == 0){
+                mp[{min(i,nod),max(i,nod)}] = ++cnt;
+            }
+            if(viz[i] == 0){
+                dfs(i);;
+            }
+        }
+    };
+
+    dfs(1);
+    for(int i = 1; i <= n; i++){
+        for(auto j : liste[i]){
+            if(i < j) cout << i << " " << j << " " << mp[{min(i,j),max(i,j)}] << '\n';
+        }
+    }
+}
+```
