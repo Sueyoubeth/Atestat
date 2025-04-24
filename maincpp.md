@@ -11,7 +11,7 @@
 Se dă un graf neorientat cu $N$ noduri, fiecarei muchii fiind asociat un cost. Fiecare nod are o culoare, reprezentată printr-un număr natural $\leq N$. $\newline$
 
 ### Cerință
-Aflați lungimea minimă a unui drum de la nodul $1$ la nodul $N$ care conțime maxim două culori distincte, cate asemenea drumuri exista și un drum posibil.
+Aflați lungimea minimă a unui drum de la nodul $1$ la nodul $N$ care conțime maxim două culori distincte, câte asemenea drumuri există și un drum posibil.
 
 ### Rezolvare
 
