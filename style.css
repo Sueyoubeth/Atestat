@@ -1,18 +1,13 @@
 body {
-  background-color: #f4f4f9;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
+
 
 h1, h2, h3 {
   color: #333;
