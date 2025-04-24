@@ -5,7 +5,7 @@
 
   Buna ziua! Mă numesc Ionescu Matei, și în ceea ce urmează a fi lucrarea mea de atestat, vă voi prezenta **top 10 probleme** pe care le-am rezolvat pe parcursul evoluției mele la informatică.
 
-## Prisonbreak (ONI $2025$ clasele $11-12$)
+## #1 Prisonbreak (ONI $2025$ clasele $11-12$)
 
 ### Enunț
 Se dă un graf neorientat cu $N$ noduri, fiecarei muchii fiind asociat un cost. Fiecare nod are o culoare, reprezentată printr-un număr natural $\leq N$. $\newline$
@@ -21,7 +21,7 @@ Fie $u$ un vecin al nodului $1$, și $v$ un vecin al nodului $u$ ($v \neq 1$). A
 
 Algoritmul rulează în $O(N log(N) \cdot \text{nr perechi})$. După timpul de execuție al programului, deducem că numarul de perechi este maxim undeva la $100$ (poate sunt testele proaste).
 
-## Festival (ONI $2025$ clasele $11-12$)
+## #2 Festival (ONI $2025$ clasele $11-12$)
 
 ### Enunț
 
