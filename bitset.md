@@ -279,11 +279,11 @@ Vom aborda o metodă similară cu prima problema, unde vom reține într-un tabl
 
 Pentru a înțelege mai bine haideți să vizualizăm concret ce se întâmplă pe unul dintre exemple:
 
- $\textcolor{white}{3} \ \textcolor{blue}{6} \ \textcolor{white}{2 \ 3 \ 1}$  
- $\textcolor{white}{9} \ \textcolor{white}{2} \ \textcolor{white}{9 \ 2} \  \textcolor{white}{8}$  
- $\textcolor{white}{0} \ \textcolor{white}{8} \ \textcolor{white}{0} \ \textcolor{white}{4} \ \textcolor{white}{4}$  
- $\textcolor{white}{5} \ \textcolor{white}{1 \ 8} \ \textcolor{blue}{6} \ \textcolor{white}{8}$  
-$\textcolor{white}{4 \ 3 \ 3 \ 0 \ 1}$
+ $\textcolor{black}{3} \ \textcolor{blue}{6} \ \textcolor{black}{2 \ 3 \ 1}$  
+ $\textcolor{black}{9} \ \textcolor{black}{2} \ \textcolor{black}{9 \ 2} \  \textcolor{black}{8}$  
+ $\textcolor{black}{0} \ \textcolor{black}{8} \ \textcolor{black}{0} \ \textcolor{black}{4} \ \textcolor{black}{4}$  
+ $\textcolor{black}{5} \ \textcolor{black}{1 \ 8} \ \textcolor{blue}{6} \ \textcolor{black}{8}$  
+$\textcolor{black}{4 \ 3 \ 3 \ 0 \ 1}$
 
 $S = \textcolor{blue}{6} \text{281864292913}$
 
@@ -292,7 +292,7 @@ Cu albastru sunt marcate elementele care coincid cu prefixul de lungime $1$. În
 Pentru prima linie, procesul descris mai sus ar arăta în felul următor:
 
 
-$$\textcolor{white}{3} \ \textcolor{blue}{6} \ \textcolor{white}{2 \ 3 \ 1} \Rightarrow \textcolor{blue}{3} \ \textcolor{white}{6} \ \textcolor{blue}{2} \ \textcolor{white}{3 \ 1}$$
+$$\textcolor{black}{3} \ \textcolor{blue}{6} \ \textcolor{black}{2 \ 3 \ 1} \Rightarrow \textcolor{blue}{3} \ \textcolor{black}{6} \ \textcolor{blue}{2} \ \textcolor{black}{3 \ 1}$$
 
 Singura problemă pe care o întâmpinăm este dată de corelarea corectă a fiecarei poziți din drum cu cea din șirul $S$. Adică, elementul cu valoarea $3$ nu ar trebui marcat, deoarece $S_2 = 2$. Există o soluție totuși pentru problema noastră, care constă în reținerea în alt **bitset** , în funcție de sensul în care shiftăm, dacă există o poziție $p$ pentru care $M_{l,p} = S_i$ și $M_{l,p-1} = S_{i-1}$ (în cazul în care vrem să shiftăm la dreapta).
 
