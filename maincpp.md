@@ -171,7 +171,7 @@ $$ 1^2 \\cdot (i^k - (i - 1)^k) + 2 \\cdot ((i-1)^k - (i-2)^k) + \\dots + i^2 \\
 
 iar când facem tranziția la $i + 1$:
 
-$$ (1 + 1)^2 \\cdot (i^k - (i - 1)^k) + (2 + 1)  \\cdot ((i-1)^k - (i-2)^k) + \\dots + (j + 1)^2 \\cdot ((i - j + 1)^k - (i - j)^k) + \\dots + (i + 1) \\cdot 1^k $$
+$$ (1 + 1)^2 \\cdot (i^k - (i - 1)^k) + (2 + 1)  \\cdot ((i-1)^k - (i-2)^k) + \\dots + (i + 1) \\cdot 1^k $$
 
 Desfacem parantezele și obținem:
 
