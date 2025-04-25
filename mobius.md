@@ -323,7 +323,7 @@ $$
 Pentru a calcula $p(k)$ ne putem folosi de funcția mobius astfel:
 
 
-$$ p(k) &= \sum_{1 \leq i,j \leq N} i \cdot j \cdot [\operatorname{cmmdc}(i,j) = k] $$
+$$ p(k) = \sum_{1 \leq i,j \leq N} i \cdot j \cdot [\operatorname{cmmdc}(i,j) = k] $$
 
 $$ \sum_{a = 1}^{\frac{N}{k}} \sum_{b = 1}^{\frac{N}{k}} a \cdot b \cdot k^2 \cdot [\operatorname{cmmdc}(a,b) = 1] $$
 
