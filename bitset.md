@@ -1,4 +1,4 @@
-<h1>Bitset pentru programare competitivă</h1>
+<h1 style="text-align:center;">Bitset pentru programare competitivă</h1>
 <br>
 <br>
 
