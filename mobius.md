@@ -2,7 +2,7 @@
 
 <br>
 <br>
-
+ 
 ## Noțiuni introductive 
 
 În teoria numerelor, o funcție aritmetică este o funcție $f(n) : \mathbb{N} \to
