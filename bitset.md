@@ -8,7 +8,7 @@ In **C++**, clasa **bitset** constituie o succesiune de biți, putând fi asocia
 ### Sintaxă
 * ```std::bitset``` se regăsește in librăriile```<bitset>``` sau ```<bits/stdc++.h>```.
 * Linia ```bitset<N> b;``` declară un bitset cu exact $N$ biți, $N$ este constantă, i.e. se specifică explicit valoarea acesteia la declarare.
-* De asemenenea putem declara un **bitset** care să conțină biții unui număr: ```bitset<10> b(13)```.
+* De asemenenea putem declara un **bitset** care să conțină biții unui număr: ```bitset<10> b(13)```. 
 
 #### Program C++
 ```cpp
