@@ -1,9 +1,9 @@
-<h2 style="text-align:center;">Lucrare de Atestat</h2>
-<h3 style="text-align:right;"> Ionescu Matei </h3>
+<h2 style="text-align:center;">Top 10 probleme la informatică</h2>
+
 
 # Introducere
 
-  Buna ziua! Mă numesc Ionescu Matei, și în ceea ce urmează a fi lucrarea mea de atestat, vă voi prezenta **top 10 probleme** pe care le-am rezolvat pe parcursul evoluției mele la informatică.
+  Buna ziua! Mă numesc Ionescu Matei, și în acest articol vă voi prezenta **top 10 probleme** pe care le-am rezolvat pe parcursul evoluției mele la informatică.
 
 ## #1 Prisonbreak (ONI $2025$ clasele $11-12$)
 
