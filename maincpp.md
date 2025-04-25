@@ -1,5 +1,7 @@
 <h1 style="text-align:center;">Top 10 probleme la informatică</h1>
 
+<br>
+<br>
 
 ## Introducere
 
