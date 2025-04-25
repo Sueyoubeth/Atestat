@@ -556,16 +556,6 @@ Ne folosim de ideea prezentată la problema anterioară.
 $$ f(n) = {n-k+1 \choose k} - \sum_{d=2}^{n} f\left(\left\lfloor \frac{n}{d}
 \right\rfloor \right). $$
 
-!!! note "Observație"
-
-    Deducem cu puternicele noastre simțuri că modulul ($M$) în problema asta
-    este mult mai mic decât $N$, astfel putem să calculăm combinările mult mai
-    rapid:
-
-    - $n \leq M$, deci putem precalcula combinările în $\mathcal{O}(M)$.
-    - $n > M$, deci ${n \choose k} \%\ M = {\lfloor \frac{n}{mod} \rfloor \choose
-    \lfloor \frac{k}{mod} \rfloor} \cdot {n \bmod M \choose k \bmod M}\ \%\ M$
-
 > Observație
 >
 > Deducem cu puternicele noastre simțuri că modulul ($M$) în problema astaeste mult mai mic decât $N$, astfel putem să calculăm combinările mult mai rapid:
