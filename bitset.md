@@ -6,7 +6,7 @@ In **C++**, clasa **bitset** constituie o succesiune de biți, putând fi asocia
 * Linia ```bitset<N> b;``` declară un bitset cu exact $N$ biți, $N$ este constantă, i.e. se specifică explicit valoarea acesteia la declarare.
 * De asemenenea putem declara un **bitset** care să conțină biții unui număr: ```bitset<10> b(13)```.
 
-**Program C++**
+#### Program C++
 ```cpp
 bitset<10> b;
 int main(){
@@ -20,11 +20,11 @@ int main(){
 
 ```
 
-**Output**
+#### Output
 
 ```1000001001```
 
-**Obsevăm că**:
+#### Obsevăm că:
 * Elementele sunt indexate de la $0$.
 * ```cout << b;``` va afișa toate elementale de la **dreapta la stanga**. 
 * Este prezent ```operator[]```.
@@ -40,7 +40,7 @@ int main(){
 * ```operator<<=``` shift pe biți la stanga.
 * ```operator>>=``` shift pe biți la dreapta.
 
-**Program C++**
+#### Program C++
 ```cpp
 bitset<10> b;
 int main(){
@@ -59,7 +59,7 @@ int main(){
 
 ```
 
-**Output**
+#### Output
 ```
 0000000010
 0000001111
@@ -79,7 +79,7 @@ int main(){
 * ```.to_ulong()``` va converti **bitsetul** într-un ```unsigned long```.
 * ```.to_ullong()``` va converti **bitsetul** într-un ```unsigned long long```.
 
-**Program C++**
+#### Program C++
 ```cpp
 bitset<10> b;
 int main(){
@@ -99,7 +99,7 @@ int main(){
 
 ```
 
-**Output**
+#### Output
 ```
 3
 0000001001
@@ -123,7 +123,7 @@ Un prim exemplu este o problemă destul de clasică care ne cere să determinăm
 Considerăm următoare abordare: $dp[u][v] = 1$ dacă afirmația este adevarată.
 Pentru a calcula eficient dinamica am putea sorta topologic graful. Astfel dacă fixăm o rădăcină, i.e. un nod cu gradul interior $0$ neeliminat până în prezent, atunci putem "propaga" dp-ul în fiecare fiu al său, adică ```dp[f_j][x] |= dp[r_i][x]```, cu condiția că muchia dintre $r_i$ și $f_j$ să nu fie eliminată. Observăm că pentru $2$ noduri $u$ și $v$, ```dp[u][x] |= dp[v][x]``` este echivalentul la ```b1 |= b2```, unde $b1$ și $b2$ reprezintă $2$ ```std::bitset```-uri. Deci dacă în loc de ```vector<vector<int>> dp(n + 1, vector<int>(n + 1))``` am pune ```vector<bitset<const>> dp(n + 1)```, am putea face tranzițiile în $O ( \frac{N}{w} )$, complexitatea finală fiind $O ( \frac{N^2}{w} )$.
 
-**Program C++**
+#### Program C++
 ```cpp
 const int N = 5e4 + 1;
 vector<bitset<N>> v(N);
@@ -231,7 +231,7 @@ for (int i = 1; i <= 100; i++) {
 }
 ```
 
-**Programul complet**
+#### Programul complet
 ```cpp
 int n;
 vector<int> fr(101);
@@ -301,7 +301,7 @@ Pentru a tranziționa de pe o linie pe alta (mergem în sus sau în jos), proced
 
 Complexitatea este $O(|S| \cdot \frac{N^2}{w})$.
 
-### O parte din cod (cpp)
+#### O parte din cod (cpp)
 ```cpp
 int ans = 0;
 vector<bitset<101>> dp(n + 1),new_dp(n + 1);
@@ -366,7 +366,7 @@ Problema se rezumă la : află pentru fiecare nod care este $S$-ul care maximize
 
 Pentru varianta ușoară a problemei putem află dacă $S$ constituie o sumă valida folosind dp. Similar cu  a doua problemă discutată, putem optimiza dp-ul cu ajutorul unui **bitset**, complexitatea finală fiind
 $O(\frac{N^2}{w})$.
-### Program Cpp
+#### Program Cpp
 ```cpp
 int n;
 cin >> n;
@@ -467,7 +467,7 @@ Fie $b_i$ un bitset cu soldații armatei $i$. Răspunsul este practic numărul d
 
 Însă putem să luăm pe rând secvențe de câte $w$ elemente și să calculăm rezultatul doar pentru ele, ca apoi să adunăm rezultatele pentru un query.
 
-### Program Cpp
+#### Program Cpp
 ```cpp
 const int N = 5e4 + 1, P = 1e4 + 1;
 
