@@ -112,15 +112,19 @@ int main(){
 0000001101
 13
 ```
-!!! note "Observație"
-	La fel cum putem declara ```bitset<N> b(val)```, la fel de bine putem atribui ```b = val```, dar în ambele cazuri  se vor copia doar primii $N$ biți.
+
+> **Observație**
+>
+> La fel cum putem declara ```bitset<N> b(val)```, la fel de bine putem atribui ```b = val```, dar în ambele cazuri  se vor copia doar primii $N$ biți.
 
 ## ```std::bitset``` în programare competitivă
 
 Operațiile binare funcționează la fel ca atunci când le folosim pe alte tipuri de date cum ar fi ```int```, dar datorită dimensiunilor mari pe care le poate suporta un **bitset**, acestea vin de cele mai multe ori cu o optimizare crucială ce constă în gruparea **biților** în grupe de câte $32$ elemente, convertirea acestora în **int**, aplicarea operației și înlocuirea numărului în bitset. Cum pe un număr întreg o operație binară este constantă, putem deduce deci că complexitatea pentru o astfel de operație este $O ( \frac{N}{w} )$ , unde $w$ de regulă seminifică constanta cu care este împărțit numărul de elemente $N$.
 
-!!! note "Atenție"
-	Notații de tipul $O ( \frac{N}{32} )$  **sau**  $O ( \frac{N}{64} )$ nu sunt corecte, pentru că de cele mai multe ori [constantele sunt ignorate](https://afnanmostafa.medium.com/constants-in-big-o-notation-72ce819684ae), de aceea se folosește variabila $w$. 
+> **Atenție**
+>
+> Notații de tipul $O ( \frac{N}{32} )$  **sau**  $O ( \frac{N}{64} )$ nu sunt corecte, pentru că de cele mai multe ori [constantele sunt ignorate](https://afnanmostafa.medium.com/constants-in-big-o-notation-72ce819684ae), de aceea se folosește variabila $w$. 
+
 
 ### Problema [somnoros](https://kilonova.ro/problems/677?list_id=461)
 Un prim exemplu este o problemă destul de clasică care ne cere să determinăm dacă într-un graf orientat aciclic avem drum de la un nod la altul.
