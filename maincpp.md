@@ -15,7 +15,7 @@ Se dă un graf neorientat cu $N$ noduri, fiecarei muchii fiind asociat un cost. 
 ### Cerință
 Aflați lungimea minimă a unui drum de la nodul $1$ la nodul $N$ care conțime maxim două culori distincte, câte asemenea drumuri există și un drum posibil.
 
-### Rezolvare
+### Rezolvare 
 
 Trebuie doar să găsim acele perechi de culori pentru care știm sigur că avem drum minim între cele două noduri. Cum nu prea avem o idee validă prin care să facem asta, vom lua toate perechile legite de culori. Astfel, vrem să știm pentru care perechi $(a,b)$ există un drum de la $1$ la $N$ parcurgând doar culorile $a$ sau $b$. $\newline$
 
