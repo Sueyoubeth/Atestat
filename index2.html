@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Top 10 probleme</title>
+  <!-- marked.js for Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- MathJax config -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+
+  <!-- MathJax script (deferred) -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div id="markdown-content"></div>
+  
+  <script>
+    fetch('https://raw.githubusercontent.com/Sueyoubeth/Atestat/refs/heads/main/maincpp.md')
+      .then(res => res.text())
+      .then(markdown => {
+        const html = marked.parse(markdown);
+        document.getElementById('markdown-content').innerHTML = html;
+
+        // ✅ Tell MathJax to reprocess the page after inserting HTML
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      });
+  </script>
+</body>
+</html>
