@@ -286,8 +286,9 @@ $$\textcolor{black}{9} \ \textcolor{black}{2} \ \textcolor{black}{9 \ 2} \  \tex
 
 $$\textcolor{black}{0} \ \textcolor{black}{8} \ \textcolor{black}{0} \ \textcolor{black}{4} \ \textcolor{black}{4}$$  
 
-$\textcolor{black}{5} \ \textcolor{black}{1 \ 8} \ \textcolor{blue}{6} \ \textcolor{black}{8}$  
-$\textcolor{black}{4 \ 3 \ 3 \ 0 \ 1}$
+$$\textcolor{black}{5} \ \textcolor{black}{1 \ 8} \ \textcolor{blue}{6} \ \textcolor{black}{8}$$
+
+$$\textcolor{black}{4 \ 3 \ 3 \ 0 \ 1}$$
 
 $S = \textcolor{blue}{6} \text{281864292913}$
 
