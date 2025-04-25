@@ -1,3 +1,3 @@
-<h2 style="text-align:center;">Informtica în cpp</h2>
+<h1 style="text-align:center;">Informtica în cpp</h1>
 
 
