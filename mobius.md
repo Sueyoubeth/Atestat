@@ -322,7 +322,7 @@ $$
 
 Pentru a calcula $p(k)$ ne putem folosi de funcția mobius astfel:
 
-$$
+$
 \begin{align*}
 p(k) &= \sum_{1 \leq i,j \leq N} i \cdot j \cdot \\
 [\operatorname{cmmdc}(i,j) = k] \\ 
@@ -332,7 +332,7 @@ p(k) &= \sum_{1 \leq i,j \leq N} i \cdot j \cdot \\
 \sum_{d = 1}^{\frac{N}{k}} \mu(d) \cdot [d \mid a] \cdot [d \mid b] \\ 
 &= k^2 \cdot \sum_{d=1}^{\frac{N}{k}} \mu(d) \cdot \left(\sum_{a = 1}^{\frac{N}{k}} a \cdot [d \mid a] \right) \cdot \left(\sum_{b=1}^{\frac{N}{k}} b \cdot [d \mid b] \right)
 \end{align*}
-$$
+$
 
 Observăm că:
 
