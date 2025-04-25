@@ -1,5 +1,8 @@
 <h1 style="text-align:center;">Funcția Mobius</h1>
 
+<br>
+<br>
+
 ## Noțiuni introductive
 
 În teoria numerelor, o funcție aritmetică este o funcție $f(n) : \mathbb{N} \to
@@ -34,11 +37,10 @@ Pentru $\forall p \in \mathbb{N}$, $p$ număr prim, și $\forall k \in
   \leq x \leq p^k$ și $\operatorname{cmmdc}(x, p^k) = 1$ există
 - funcția Möbius $\mu(p^k) = [k = 0] - [k = 1]$.
 
-!!! note "Definiție"
 
-    Două funcții multiplicative, $f(n)$ și $g(n)$, sunt identice dacă pentru
-    oricare $p$ număr prim și oricare $k \geq 0$, $g(p^k) = f(p^k)$.
-
+> Definiție
+>
+> Două funcții multiplicative, $f(n)$ și $g(n)$, sunt identice dacă pentru oricare $p$ număr prim și oricare $k \geq 0$, $g(p^k) = f(p^k)$.
 ## Precalcularea funcțiilor multiplicative
 
 În contextul nostru, vom lucra cel mai des cu funcții multiplicative, iar de
@@ -94,16 +96,11 @@ for (int i = 2; i <= n; i++) {
 }
 ```
 
-!!! note "Demonstrație"
 
-    Ca să demonstrăm faptul că ciurul de mai sus iterează prin fiecare număr
-    compus exact odată avem nevoie de cel mai mic factor prim al acestuia, $p$.
-    Să presupunem că $q = i \cdot p$. Pentru oricare $j > i$, $j$ este divizor a
-    lui $q$, presupunem ca $k = \frac{q}{j}$ este prim. Cum $i < j$, atunci $k <
-    p$, însă $p$ este cel mai mic număr prim care divide $q$, deci nu există un
-    astfel $k$. Deci odată luată în considerare perechea $(i, p)$,\, $i \cdot p$
-    va fi calculat doar o singură dată, transformând complexitatea finală în
-    $\mathcal{O}(N)$.
+
+> Demonstrație
+>
+> Ca să demonstrăm faptul că ciurul de mai sus iterează prin fiecare număr compus exact odată avem nevoie de cel mai mic factor prim al acestuia, $p$. Să presupunem că $q = i \cdot p$. Pentru oricare $j > i$, $j$ este divizor a lui $q$, presupunem ca $k = \frac{q}{j}$ este prim. Cum $i < j$, atunci $k < p$, însă $p$ este cel mai mic număr prim care divide $q$, deci nu există un astfel $k$. Deci odată luată în considerare perechea $(i, p)$,\, $i \cdot p$ va fi calculat doar o singură dată, transformând complexitatea finală în $\mathcal{O}(N)$.
 
 ### Precalcularea indicatorului lui Euler folosind Ciurul Liniar
 
@@ -168,10 +165,11 @@ for (int i = 2; i <= N; i++) {
 }
 ```
 
-!!! note "Atenție"
 
-    Funcția pow din cod este o funcție scrisă de mână. Nu recomandăm folosirea
-    funcției `#!cpp pow` din `#!cpp <cmath>`, din cauza erorilor de precizie.
+ 
+> Atenție
+>
+> Funcția pow din cod este o funcție scrisă de mână. Nu recomandăm folosirea funcției `#!cpp pow` din `#!cpp <cmath>`, din cauza erorilor de precizie.
 
 Gândim similar pentru funcția Möbius:
 
@@ -180,10 +178,10 @@ Gândim similar pentru funcția Möbius:
 - $n = i \cdot p$, $p \mid i$, deci $\mu(n) =
   \frac{\mu(i)}{[sml(i)=0]-[sml(i)=1]} \cdot ([sml(i)+1=0]-[sml(i)+1=1])$.
 
-!!! note "Observație"
 
-    În cazul în care fracția de mai sus nu este definită (numitorul este 0),
-    putem spune din start că $\mu(n) = 0$.
+> Observație
+>
+> În cazul în care fracția de mai sus nu este definită (numitorul este 0), putem spune din start că $\mu(n) = 0$.
 
 ```cpp
 vector<int> prime;
@@ -449,11 +447,9 @@ $\mathcal{O}(\sqrt{N})$ elemente diferite, putem doar să calculăm câte numere
 $d_1$ există, astfel încât $\frac{n}{d} = \frac{n}{d_1}$ și să adunăm la
 rezultat $f(\lfloor \frac{n}{d} \rfloor) \cdot nr$.
 
-!!! note "Observație"
-
-    Fie $d$ cel mai mic număr astfel încât $\frac{n}{d} = x$. Atunci cel mai
-    mare număr care îndeplinește aceeași proprietate este $\left\lfloor
-    \frac{n}{\lfloor \frac{n}{d} \rfloor} \right\rfloor$.
+> Observație
+>
+> Fie $d$ cel mai mic număr astfel încât $\frac{n}{d} = x$. Atunci cel mai mare număr care îndeplinește aceeași proprietate este $\left\lfloor \frac{n}{\lfloor \frac{n}{d} \rfloor} \right\rfloor$.
 
 ```cpp
 long long f(long long n) {
@@ -572,6 +568,13 @@ $$ f(n) = {n-k+1 \choose k} - \sum_{d=2}^{n} f\left(\left\lfloor \frac{n}{d}
     - $n \leq M$, deci putem precalcula combinările în $\mathcal{O}(M)$.
     - $n > M$, deci ${n \choose k} \%\ M = {\lfloor \frac{n}{mod} \rfloor \choose
     \lfloor \frac{k}{mod} \rfloor} \cdot {n \bmod M \choose k \bmod M}\ \%\ M$
+
+> Observație
+>
+> Deducem cu puternicele noastre simțuri că modulul ($M$) în problema astaeste mult mai mic decât $N$, astfel putem să calculăm combinările mult mai rapid:
+> - $n \leq M$, deci putem precalcula combinările în $\mathcal{O}(M)$.
+> - $n > M$, deci ${n \choose k} \%\ M = {\lfloor \frac{n}{mod} \rfloor \choose\lfloor \frac{k}{mod} \rfloor} \cdot {n \bmod M \choose k \bmod M}\ \%\ M$
+
 
 ```cpp
 #include <bits/stdc++.h>
