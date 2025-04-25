@@ -279,10 +279,10 @@ Vom aborda o metodă similară cu prima problema, unde vom reține într-un tabl
 
 Pentru a înțelege mai bine haideți să vizualizăm concret ce se întâmplă pe unul dintre exemple:
 
- $\textcolor{black}{3} \ \textcolor{blue}{6} \ \textcolor{black}{2 \ 3 \ 1}$  
- $\textcolor{black}{9} \ \textcolor{black}{2} \ \textcolor{black}{9 \ 2} \  \textcolor{black}{8}$  
- $\textcolor{black}{0} \ \textcolor{black}{8} \ \textcolor{black}{0} \ \textcolor{black}{4} \ \textcolor{black}{4}$  
- $\textcolor{black}{5} \ \textcolor{black}{1 \ 8} \ \textcolor{blue}{6} \ \textcolor{black}{8}$  
+$\textcolor{black}{3} \ \textcolor{blue}{6} \ \textcolor{black}{2 \ 3 \ 1}$  
+$\textcolor{black}{9} \ \textcolor{black}{2} \ \textcolor{black}{9 \ 2} \  \textcolor{black}{8}$  
+$\textcolor{black}{0} \ \textcolor{black}{8} \ \textcolor{black}{0} \ \textcolor{black}{4} \ \textcolor{black}{4}$  
+$\textcolor{black}{5} \ \textcolor{black}{1 \ 8} \ \textcolor{blue}{6} \ \textcolor{black}{8}$  
 $\textcolor{black}{4 \ 3 \ 3 \ 0 \ 1}$
 
 $S = \textcolor{blue}{6} \text{281864292913}$
