@@ -69,8 +69,9 @@ int main(){
 0000001111
 0000000000
 ```
-!!! note "Observație"
-	Dacă shiftarea, într-o oarecare direcție, presupune pentru unele elemente egale cu $1$ să "iasă" din **bitset**, atunci valorile de $1$ aferente se vor pierde permanent.
+> **Observație**
+>
+> Dacă shiftarea, într-o oarecare direcție, presupune pentru unele elemente egale cu `1` să "iasă" din **bitset**, atunci valorile de `1` aferente se vor pierde permanent.
 
 ### Funcții permise
 
