@@ -335,11 +335,9 @@ $$ k^2 \cdot \sum_{d=1}^{\frac{N}{k}} \mu(d) \cdot \left(\sum_{a = 1}^{\frac{N}{
 Observăm că:
 
 
-$$ \sum_{a=1}^{\frac{N}{k}} a \cdot [d \mid a] $$
-
-$$ \sum_{b=1}^{\frac{N}{k}} b \cdot [d \mid b] $$
-$$ \left(d \cdot (1 + 2 + \dots + \frac{N}{kd}) \right)^2 $$
-$$ \left( d \cdot \frac{\frac{N}{kd} \cdot \left(\frac{N}{kd} + 1\right)}{2} \right)^2 $$
+$$ \sum_{a=1}^{\frac{N}{k}} a \cdot [d \mid a] = \sum_{b=1}^{\frac{N}{k}} b \cdot [d \mid b] = $$
+$$ = \left(d \cdot (1 + 2 + \dots + \frac{N}{kd}) \right)^2 $$
+$$ = \left( d \cdot \frac{\frac{N}{kd} \cdot \left(\frac{N}{kd} + 1\right)}{2} \right)^2 $$
 
 Deci:
 
