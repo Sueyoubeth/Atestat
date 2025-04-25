@@ -325,11 +325,11 @@ Pentru a calcula $p(k)$ ne putem folosi de funcția mobius astfel:
 
 $$ p(k) = \sum_{1 \leq i,j \leq N} i \cdot j \cdot [\operatorname{cmmdc}(i,j) = k] $$
 
-$$ \sum_{a = 1}^{\frac{N}{k}} \sum_{b = 1}^{\frac{N}{k}} a \cdot b \cdot k^2 \cdot [\operatorname{cmmdc}(a,b) = 1] $$
+$$ = \sum_{a = 1}^{\frac{N}{k}} \sum_{b = 1}^{\frac{N}{k}} a \cdot b \cdot k^2 \cdot [\operatorname{cmmdc}(a,b) = 1] $$
 
-$$ \sum_{a = 1}^{\frac{N}{k}} \sum_{b = 1}^{\frac{N}{k}} a \cdot b \cdot k^2 \cdot \sum_{d = 1}^{\frac{N}{k}} \mu(d) \cdot [d \mid a] \cdot [d \mid b] $$
+$$ = \sum_{a = 1}^{\frac{N}{k}} \sum_{b = 1}^{\frac{N}{k}} a \cdot b \cdot k^2 \cdot \sum_{d = 1}^{\frac{N}{k}} \mu(d) \cdot [d \mid a] \cdot [d \mid b] $$
 
-$$ k^2 \cdot \sum_{d=1}^{\frac{N}{k}} \mu(d) \cdot \left(\sum_{a = 1}^{\frac{N}{k}} a \cdot [d \mid a] \right) \cdot \left(\sum_{b=1}^{\frac{N}{k}} b \cdot [d \mid b] \right) $$
+$$ = k^2 \cdot \sum_{d=1}^{\frac{N}{k}} \mu(d) \cdot \left(\sum_{a = 1}^{\frac{N}{k}} a \cdot [d \mid a] \right) \cdot \left(\sum_{b=1}^{\frac{N}{k}} b \cdot [d \mid b] \right) $$
 
 
 Observăm că:
@@ -341,15 +341,11 @@ $$ = \left( d \cdot \frac{\frac{N}{kd} \cdot \left(\frac{N}{kd} + 1\right)}{2} \
 
 Deci:
 
-$$ p(k) = k^2 \cdot \sum_{d = 1}^{\frac{N}{k}} \mu(d) \cdot \left( d \cdot
-\dfrac{\frac{N}{kd} \cdot (\frac{N}{kd} + 1)}{2} \right)^2 $$
+$$ p(k) = k^2 \cdot \sum_{d = 1}^{\frac{N}{k}} \mu(d) \cdot \left( d \cdot \dfrac{\frac{N}{kd} \cdot (\frac{N}{kd} + 1)}{2} \right)^2 $$
 
-Revenim la problema noastră inițială: $$ f(k) = \frac{p(k)}{k} = k \cdot \sum_{d
-= 1}^{\frac{N}{k}} \mu(d) \cdot \left( d \cdot \dfrac{\frac{N}{kd} \cdot
-(\frac{N}{kd} + 1)}{2} \right)^2 $$
+Revenim la problema noastră inițială: $$ f(k) = \frac{p(k)}{k} = k \cdot \sum_{d = 1}^{\frac{N}{k}} \mu(d) \cdot \left( d \cdot \dfrac{\frac{N}{kd} \cdot (\frac{N}{kd} + 1)}{2} \right)^2 $$
 
-Iar răspunsul final este $\sum_{k=1}^{N} f(k)$, care este calculabil în
-$\mathcal{O}(N \log N)$.
+Iar răspunsul final este $\sum_{k=1}^{N} f(k)$, care este calculabil în $\mathcal{O}(N \log N)$.
 
 ## Probleme propuse spre rezolvare
 
@@ -365,80 +361,72 @@ Dacă pentru un $K$ fixat aflăm câte M-tupluri există cu cmmdc-ul egal cu $K$
 atunci putem rezolva foarte ușor problema. Fie $f(K)$ numărul de tupluri $(m,
 n)$ pentru care $\operatorname{cmmdc}(m, n) = K$:
 
-$$ \begin{align*} f(K) &= \sum_{i_1 = 1}^{N} \sum_{i_2 = 1}^{N} \dots \sum_{i_M
-= 1}^{N} [\text{cmmdc}(i_1, i_2, \dots, i_M) = K] \\ &= \sum_{i_1 =
-1}^{\frac{N}{K}} \sum_{i_2 = 1}^{\frac{N}{K}} \dots \sum_{i_M = 1}^{\frac{N}{K}}
-[\text{cmmdc}(i_1, i_2, \dots, i_M) = 1] \\ &= \sum_{i_1 = 1}^{\frac{N}{K}}
-\sum_{i_2 = 1}^{\frac{N}{K}} \dots \sum_{i_M = 1}^{\frac{N}{K}} \sum_{d =
-1}^{\frac{N}{K}} \mu(d) \cdot [d \mid i_1] \cdots [d \mid i_M] \\ &= \sum_{d =
-1}^{\frac{N}{K}} \mu(d) \cdot \left(\sum_{i_1 = 1}^{\frac{N}{K}}
-[d \mid i_1]\right) \cdots \left(\sum_{i_M = 1}^{\frac{N}{K}}
-[d \mid i_M]\right) \\ &= \sum_{d = 1}^{\frac{N}{K}} \mu(d) \cdot
-\left(\frac{N}{Kd}\right)^M. \end{align*} $$
+ 
+$$ f(K) = \sum_{i_1 = 1}^{N} \sum_{i_2 = 1}^{N} \dots \sum_{i_M = 1}^{N} [\text{cmmdc}(i_1, i_2, \dots, i_M) = K] $$
+
+$$ = \sum_{i_1 = 1}^{\frac{N}{K}} \sum_{i_2 = 1}^{\frac{N}{K}} \dots \sum_{i_M = 1}^{\frac{N}{K}} [\text{cmmdc}(i_1, i_2, \dots, i_M) = 1] $$
+
+$$ = \sum_{i_1 = 1}^{\frac{N}{K}} \sum_{i_2 = 1}^{\frac{N}{K}} \dots \sum_{i_M = 1}^{\frac{N}{K}} \sum_{d = 1}^{\frac{N}{K}} \mu(d) \cdot [d \mid i_1] \cdots [d \mid i_M] $$ 
+
+$$ = \sum_{d = 1}^{\frac{N}{K}} \mu(d) \cdot \left(\sum_{i_1 = 1}^{\frac{N}{K}} [d \mid i_1]\right) \cdots \left(\sum_{i_M = 1}^{\frac{N}{K}} [d \mid i_M]\right) $$
+
+$$ = \sum_{d = 1}^{\frac{N}{K}} \mu(d) \cdot \left(\frac{N}{Kd}\right)^M $$
 
 Rezultatul problemei este dat de $\sum_{i=1}^{N} f(i) \cdot i$. Complexitatea de
 timp pentru a calcula $f(K)$ este $\mathcal{O}(\frac{N}{K}\log{M})$, astfel
 complexitatea finală este
 
-$$ \begin{align*} \sum_{i=1}^{N} O\left(\frac{N}{i} \log{M}\right) &= O\left(N +
-\frac{N}{2} + \frac{N}{3} + \cdots + \frac{N}{N}\right) \log{M} \\ &= O\left(N
-\left(1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{N}\right) \log{M}\right)
-\\ &= O\left(N \log{N} \log{M}\right). \end{align*} $$
+$$\sum_{i=1}^{N} O\left(\frac{N}{i} \log{M}\right) $$
+
+$$ = O\left(N + \frac{N}{2} + \frac{N}{3} + \cdots + \frac{N}{N}\right) \log{M} $$ 
+
+$$ = O\left(N \left(1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{N}\right) \log{M}\right) $$
+
+$$ = O\left(N \log{N} \log{M}\right) $$
 
 Altă soluție este următoarea:
 
-Vom pune pe cele $M$ poziții doar multiplii de $K$, astfel se formează
-$\left\lfloor\frac{N}{K} \right\rfloor^M$ șiruri posibile, dintre care scădem
-$f(K \cdot Q), Q \geq 1$.
+Vom pune pe cele $M$ poziții doar multiplii de $K$, astfel se formează $\left\lfloor\frac{N}{K} \right\rfloor^M$ șiruri posibile, dintre care scădem $f(K \cdot Q), Q \geq 1$.
 
-$$ \begin{align*} f(K) &= M^{\left\lfloor \frac{N}{K} \right\rfloor} - \sum_{K
-\mid i} f(i) \\ &= M^{\left\lfloor \frac{N}{K} \right\rfloor} - \sum_{i=1}^{N}
-f(i) \cdot [K \mid i] \\ &= M^{\left\lfloor \frac{N}{K} \right\rfloor} -
-\sum_{i=1}^{\frac{N}{K}} f(K \cdot i). \end{align*} $$
+$$ f(K) = M^{\left\lfloor \frac{N}{K} \right\rfloor} - \sum_{K \mid i} f(i) $$
+
+$$ = M^{\left\lfloor \frac{N}{K} \right\rfloor} - \sum_{i=1}^{N} f(i) \cdot [K \mid i] $$ 
+
+$$ = M^{\left\lfloor \frac{N}{K} \right\rfloor} - \sum_{i=1}^{\frac{N}{K}} f(K \cdot i) $$
 
 Complexitatea devine:
 
-$$
-\begin{align*}
-\sum_{i=1}^{N} \mathcal{O}(\left\lfloor \frac{N}{i} \right\rfloor + \log{M}) &=
-\mathcal{O}(N \left(1 + \frac{1}{2} + \frac{1}{3} + \dots \frac{1}{N}\right) + N
-\log{M}) \\ &= \mathcal{O}(N \log{N} + N \log{M}) \\ &=
-\mathcal{O}(N\left(\log{N} + \log{M}\right)) \\ &= \mathcal{O}(N\log{(MN)})
-\end{align*}
-$$
+$$ \sum_{i=1}^{N} \mathcal{O}(\left\lfloor \frac{N}{i} \right\rfloor + \log{M}) $$
+
+$$ = \mathcal{O}(N \left(1 + \frac{1}{2} + \frac{1}{3} + \dots \frac{1}{N}\right) + N \log{M}) 
+
+$$ = \mathcal{O}(N \log{N} + N \log{M}) $$ 
+
+$$ = \mathcal{O}(N\left(\log{N} + \log{M}\right)) $$
+
+$$ = \mathcal{O}(N\log{(MN)}) $$
 
 Putem precalcula puterile lui $M$, obținem astfel $\mathcal{O}(N \log{N})$.
 Ambele iau 100 puncte.
 
 ### Problema [cntgcd](https://kilonova.ro/problems/372)
 
-Se dau două numere naturale $N$ și $D$. Calculați câte perechi de numere $A$ și
-$B$ mai mici ca $N$ există, astfel încât $\operatorname{cmmdc}(A,B) = D$.
-Perechea $(A,B)$ este la fel ca perechea $(B, A)$.
+Se dau două numere naturale $N$ și $D$. Calculați câte perechi de numere $A$ și $B$ mai mici ca $N$ există, astfel încât $\operatorname{cmmdc}(A,B) = D$. Perechea $(A,B)$ este la fel ca perechea $(B, A)$.
 
-Putem să luăm rezultatul de la primul exercițiu, pentru că probleme sunt
-echivalente. Singura restricție este faptul că perechea $(A,B) = (B,A)$, dar
-putem efectiv să împărțim rezultatul la 2.
+Putem să luăm rezultatul de la primul exercițiu, pentru că probleme sunt echivalente. Singura restricție este faptul că perechea $(A,B) = (B,A)$, dar putem efectiv să împărțim rezultatul la 2.
 
 $$ ans = \frac{\sum_{d=1}^{\frac{N}{D}} \mu(d) \cdot \left(\frac{N}{dD}\right)^2
 + 1}{2} $$
 
 Soluția ia undeva la 45 puncte, datorită faptului că $D \leq N \leq 10^9$.
 
-Fie $f(n)$ = numărul de perechi $(A,B)$, unde $\operatorname{cmmdc}(A,B) = 1$.
-Noi trebuie să calculăm practic $f(\left\lfloor \frac{N}{D} \right\rfloor ) =
-\sum_{d = 1}^{\left\lfloor \frac{N}{D} \right\rfloor } \varphi(d)$.
+Fie $f(n)$ = numărul de perechi $(A,B)$, unde $\operatorname{cmmdc}(A,B) = 1$. Noi trebuie să calculăm practic $f(\left\lfloor \frac{N}{D} \right\rfloor ) = \sum_{d = 1}^{\left\lfloor \frac{N}{D} \right\rfloor } \varphi(d)$.
 
-Pentru $N \leq 10^6$ putem calcula suma brut. Pentru $N > 10^6$ putem elimina
-perechile care au cmmdc-ul 2, 3 etc.
+Pentru $N \leq 10^6$ putem calcula suma brut. Pentru $N > 10^6$ putem elimina perechile care au cmmdc-ul 2, 3 etc.
 
-$$ f(n) = \frac{n^2 - n}{2} - \sum_{d=2}^{n} f\left(\left\lfloor \frac{n}{d}
-\right\rfloor\right) $$
+$$ f(n) = \frac{n^2 - n}{2} - \sum_{d=2}^{n} f\left(\left\lfloor \frac{n}{d} \right\rfloor\right) $$
 
-Datorită faptului că șirul $a_i = \lfloor \frac{N}{i} \rfloor$ are
-$\mathcal{O}(\sqrt{N})$ elemente diferite, putem doar să calculăm câte numere
-$d_1$ există, astfel încât $\frac{n}{d} = \frac{n}{d_1}$ și să adunăm la
-rezultat $f(\lfloor \frac{n}{d} \rfloor) \cdot nr$.
+Datorită faptului că șirul $a_i = \lfloor \frac{N}{i} \rfloor$ are $\mathcal{O}(\sqrt{N})$ elemente diferite, putem doar să calculăm câte numere $d_1$ există, astfel încât $\frac{n}{d} = \frac{n}{d_1}$ și să adunăm la rezultat $f(\lfloor \frac{n}{d} \rfloor) \cdot nr$.
 
 > Observație
 >
@@ -485,16 +473,11 @@ abstracție de prima proprietate, răspunsul nostru devine:
 
 $$ \sum_{d=1}^{N} \mu(d) \cdot \lfloor \frac{N}{d} \rfloor ^K $$
 
-Ce înseamnă însă $\lfloor \dfrac{N}{d} \rfloor ^ K$? Reprezintă numărul de
-șiruri de lungime $K$ , unde $X_i$ este multiplu de $d$. Ca să numărăm doar
-numărul de șiruri care sunt sortate, ne vom folosi de _Stars and Bars_, astfel
-numărul de șiruri $(X_1, X_2, X_3, .. ,X_K)$ cu $X_i \leq X_{i+1} \leq N$ este
-egal cu $N-K+1 \choose K$.
+Ce înseamnă însă $\lfloor \dfrac{N}{d} \rfloor ^ K$? Reprezintă numărul de șiruri de lungime $K$ , unde $X_i$ este multiplu de $d$. Ca să numărăm doar numărul de șiruri care sunt sortate, ne vom folosi de _Stars and Bars_, astfel numărul de șiruri $(X_1, X_2, X_3, .. ,X_K)$ cu $X_i \leq X_{i+1} \leq N$ este egal cu $N-K+1 \choose K$.
 
 Rezultatul nostru devine:
 
-$$ \sum_{d=1}^{N} \mu(d) \cdot {\left\lfloor \frac{N}{d} \right\rfloor - K + 1
-\choose K} $$
+$$ \sum_{d=1}^{N} \mu(d) \cdot {\left\lfloor \frac{N}{d} \right\rfloor - K + 1 \choose K} $$
 
 Soluția rulează în $\mathcal{O}(N)$ cu $\mathcal{O}(N)$ sau $\mathcal{O}(N \cdot \log N)$ precalcularea.
 
@@ -549,8 +532,7 @@ int main() {
 
 Ne folosim de ideea prezentată la problema anterioară.
 
-$$ f(n) = {n-k+1 \choose k} - \sum_{d=2}^{n} f\left(\left\lfloor \frac{n}{d}
-\right\rfloor \right). $$
+$$ f(n) = {n-k+1 \choose k} - \sum_{d=2}^{n} f\left(\left\lfloor \frac{n}{d} \right\rfloor \right). $$
 
 > Observație
 >
