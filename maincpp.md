@@ -1,7 +1,7 @@
-<h2 style="text-align:center;">Top 10 probleme la informatică</h2>
+<h1 style="text-align:center;">Top 10 probleme la informatică</h1>
 
 
-# Introducere
+## Introducere
 
   Buna ziua! Mă numesc Ionescu Matei, și în acest articol vă voi prezenta **top 10 probleme** pe care le-am rezolvat pe parcursul evoluției mele la informatică.
 
