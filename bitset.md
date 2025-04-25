@@ -26,7 +26,9 @@ int main(){
 
 #### Output
 
-```1000001001```
+```
+1000001001
+```
 
 #### Obsevăm că:
 * Elementele sunt indexate de la $0$.
