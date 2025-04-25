@@ -1,7 +1,7 @@
 <h1>Bitset pentru programare competitivă</h1>
+<br>
+<br>
 
-<br>
-<br>
 ## Introducere
 In **C++**, clasa **bitset** constituie o succesiune de biți, putând fi asociată cu un **vector**, însă numărul de elemente este constant pe parcursul rulării programului. În linii mari, **bitset** nu aduce o contribuție mare asupra corectitudinii unui algoritm, sau nu reprezintă o tehnică  propriu-zisă, fiind folosit de cele mai multe ori doar pentru a face optimizări semnificative asupra timpului sau memoriei. 
 
