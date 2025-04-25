@@ -3,7 +3,7 @@
 <br>
 <br>
 
-## Noțiuni introductive
+## Noțiuni introductive 
 
 În teoria numerelor, o funcție aritmetică este o funcție $f(n) : \mathbb{N} \to
 \mathbb{C}$. O funcție aritmetică exprimă proprietăți aritmetice pentru $n$.
