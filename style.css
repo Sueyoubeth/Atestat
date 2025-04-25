@@ -8,6 +8,13 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+blockquote {
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  padding: 1em;
+  border-radius: 5px;
+  margin: 1em 0;
+}
 
 p {
   text-indent: 30px;
