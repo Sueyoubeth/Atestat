@@ -398,7 +398,7 @@ Complexitatea devine:
 
 $$ \sum_{i=1}^{N} \mathcal{O}(\left\lfloor \frac{N}{i} \right\rfloor + \log{M}) $$
 
-$$ = \mathcal{O}(N \left(1 + \frac{1}{2} + \frac{1}{3} + \dots \frac{1}{N}\right) + N \log{M}) 
+$$ = \mathcal{O}(N \left(1 + \frac{1}{2} + \frac{1}{3} + \dots \frac{1}{N}\right) + N \log{M}) $$
 
 $$ = \mathcal{O}(N \log{N} + N \log{M}) $$ 
 
