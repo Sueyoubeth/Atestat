@@ -272,8 +272,8 @@ void solve(){
 ### Enunt
 
 Se dau doua siruri de caractere ($a$ si $b$) de lungime $n$, ambele continand doar $0$ si $1$. Se pot face urmatoarele doau operatii:
-* $swap(a_i,b_{i-1}$
-* $swap(b_i,a_{i-1}$
+* $swap(a_i,b_{i-1})$
+* $swap(b_i,a_{i-1})$
 
 ### Cerinta
 
@@ -281,11 +281,11 @@ Aflati daca putem sa facem sirul $a$ egal cu $0$ folosind un numar oarecare de o
 
 ### Solutie
 
-Cum putem da swap doar pe diagonala, ne vom forma doua multimi care acctioneaza complet diferit una fata de cealalta:
+Cum putem da swap doar pe diagonala, ne vom forma doua multimi care actioneaza complet diferit una fata de cealalta:
 
-$$ a : \ \  \color{cyan}0 \color{#FF3333}1 \color{cyan}0 \color{#FF3333}0 \color{cyan}0 \color{#FF3333}1 $$
+$$ a : \ \  \color{blue}0 \color{#FF3333}1 \color{blue}0 \color{#FF3333}0 \color{blue}0 \color{#FF3333}1 $$
 
-$$ b : \ \  \color{#FF3333}0 \color{cyan}1 \color{#FF3333}0 \color{cyan}1 \color{#FF3333}1 \color{cyan}1 $$
+$$ b : \ \  \color{#FF3333}0 \color{blue}1 \color{#FF3333}0 \color{blue}1 \color{#FF3333}1 \color{blue}1 $$
 
 Putem da swap doar daca au aceeasi culoare. Atunci, ne ramane sa vedem cate $0$ - uri se afla in fiecare multime, si sa comparam numarul cu cate pozitii se regasesc in sirul $a$
 
