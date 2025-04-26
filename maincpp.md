@@ -312,4 +312,247 @@ void solve(){
     }
 }
 ```
+<br>
+<br>
+
+## #9 C. Asuna and the Mosquitoes (Codeforces 1014 DIV2)
+
+### Enunț
+
+Avem un vector $v$ cu $n$ elemente. Putem să alegem două poziții, $i$ și $j$, unde $v_i + v_j$ este un număr impar și să adunăm la $v_i$ un număr natural, în timp ce scădem din $v_j$ același număr, cu condiția ca la final $v_j \geq 0$.
+
+### Cerință
+
+Aflați valoarea maximă a maximului din vector, după ce efectuăm un număr oarecare de operații.
+
+### Soluție
+
+Cazul în care toate elementele din vector au aceeași paritate îl ignorăm.
+
+Observăm că, dacă suma a două elemente este impară, înseamnă că elementele respective au parități diferite. Asta înseamnă că, dacă facem operația $v_i \ += \ v_j$, unde $v_i$ este impar și $v_j$ par, $v_i$ va rămâne tot impar. Prin urmare, putem să adunăm toate numerele pare într-o singură variabilă impară.  
+
+Pentru restul numerelor impare, vom selecta un număr par din vector (în cazul nostru, singurele numere pare rămase sunt $0$) și îl vom incrementa cât de mult putem, cu condiția să rămână par.  
+
+Pe scurt, rezultatul final va fi suma tuturor elementelor minus numărul de numere impare, plus $1$.
+
+### Cod
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<vector<ll>> fr(2);
+    int maxim = 0;
+    for (int i = 1; i <= n; i++) {
+        int x;
+        cin >> x;
+        fr[x % 2].push_back(x);
+        maxim = max(maxim, x);
+    }
+
+    if (fr[0].size() == 0 || fr[1].size() == 0) {
+        cout << maxim << '\n';
+        return;
+    }
+
+    ll sm = 0;
+    for (auto i : fr[0]) {
+        sm += i;
+    }
+    for (int i = 0; i < fr[1].size(); i++) {
+        sm += fr[1][i];
+    }
+    sm -= (fr[1].size() - 1);
+    cout << sm << '\n';
+}
+
+```
+<br>
+<br>
+
+## #10 D. Mishkin Energizer (Codeforces 1014 DIV2)
+
+### Enunț
+
+Avem un șir de caractere de lungime $n$. Șirul conține doar literele $L$, $I$ și $T$.
+
+### Cerință
+
+Putem să introducem un caracter între două poziții doar dacă:
+- caracterul introdus diferă de caracterele de pe ambele poziții;
+- iar cele două caractere de pe pozițiile respective sunt, la rândul lor, diferite.
+
+Se pot introduce maximum $2n$ caractere, astfel încât, la final, toate cele $3$ litere să apară de același număr de ori.
+
+### Soluție
+
+Vom sorta caracterele în funcție de numărul de apariții și vom încerca, la primul pas, să adăugăm litere astfel încât primele două litere care apar de cel mai puține ori să aibă frecvențe egale. 
+
+De exemplu, dacă $L$ apare de $3$ ori, $I$ apare de $5$ ori, iar $T$ de $10$ ori, vom încerca să adăugăm $2$ caractere de $L$ pentru a le egala pe $L$ și $I$. 
+
+Totuși, există posibilitatea să nu mai putem introduce caractere de tipul $L$, deși încă avem nevoie. Soluția este următoarea: găsim o poziție $i$ astfel încât $s_i = L$ și $s_{i + 1} = T$ (sau invers) și vom adăuga următoarele caractere:
+
+$\color{black}L \color{red}T \color{blue}L \color{red}I \color{blue}L \color{black}T$
+
+Observăm că numărul de caractere $L$ crește cu $2$, în timp ce celelalte două cresc cu $1$.
+
+La final, după ce am adăugat suficiente caractere astfel încât cele mai mici frecvențe să fie egale, putem să completăm restul liber, indiferent de ordinea lor, pentru a echilibra șirul.
+
+```cpp
+void solve(){
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    s = '.' + s;
+
+    vector<int> fr(200);
+
+    for(int i = 1; i <= n; i++){
+        fr[s[i]]++;
+    }
+
+    vector<pair<int,char>> lol;
+    lol.push_back({fr['T'],'T'});
+    lol.push_back({fr['I'],'I'});
+    lol.push_back({fr['L'],'L'});
+
+    sort(lol.begin(),lol.end());
+    vector<int> ans;
+    if(lol[0].first == lol[1].first && lol[1].first == lol[2].first){
+        cout << 0 << '\n';
+        return;
+    }
+
+
+    if(lol[0].first == 0 && lol[1].first == 0){
+        cout << -1 << '\n';
+        return;
+    }
+    int ok = 1;
+    while(ok){
+        ok = 0;
+
+
+        sort(lol.begin(),lol.end());
+        if(lol[0].first == lol[1].first){
+            break;
+        }
+        for(int i = 1; i < n; i++){
+            if(lol[0].first < lol[1].first && s[i] != lol[0].second && s[i + 1] != lol[0].second && s[i] != s[i + 1]){
+    
+                s = s.substr(0,i + 1) + lol[0].second + s.substr(i + 1, n - i);
+                n++;
+                lol[0].first++;
+                fr[lol[0].second]++;
+                ans.push_back(i);
+                ok = 1;
+            }
+        }
+        if(ok == 0 && lol[0].first != lol[1].first){
+
+            
+            for(int i = 1; i < n; i++){
+                if(lol[0].first < lol[1].first && s[i] == lol[0].second && s[i + 1] == lol[2].second){
+                    ans.push_back(i);
+                    s = s.substr(0,i + 1) + lol[1].second + s.substr(i + 1, n - i);
+                    n++;
+                    lol[1].first++;
+                    fr[lol[1].second]++;
+
+
+                    ans.push_back(i);
+                    s = s.substr(0,i + 1) + lol[2].second + s.substr(i + 1, n - i);
+                    n++;
+                    lol[2].first++;
+                    fr[lol[2].second]++;
+
+
+                    ans.push_back(i + 1);
+                    s = s.substr(0,i + 2) + lol[0].second + s.substr(i + 2, n - i - 1);
+                    n++;
+                    lol[0].first++;
+                    fr[lol[0].second]++;
+                    
+
+                    ans.push_back(i + 3);
+                    s = s.substr(0,i + 4) + lol[0].second + s.substr(i + 4, n - (i + 4) + 1);
+                    n++;
+                    lol[0].first++;
+                    fr[lol[0].second]++;
+
+                   
+                    ok = 1;
+                }else if(lol[0].first < lol[1].first && s[i] == lol[2].second && s[i + 1] == lol[0].second){
+                    ans.push_back(i);
+                    s = s.substr(0,i + 1) + lol[1].second + s.substr(i + 1, n - i);
+                    n++;
+                    lol[1].first++;
+                    fr[lol[1].second]++;
+
+
+                    ans.push_back(i + 1);
+                    s = s.substr(0,i + 2) + lol[2].second + s.substr(i + 2, n - (i + 2) + 1);
+                    n++;
+                    lol[2].first++;
+                    fr[lol[2].second]++;
+
+                    ans.push_back(i);
+                    s = s.substr(0,i + 1) + lol[0].second + s.substr(i + 1, n - i);
+                    n++;
+                    lol[0].first++;
+                    fr[lol[0].second]++;
+
+                    ans.push_back(i + 2);
+                    s = s.substr(0,i + 3) + lol[0].second + s.substr(i + 3, n - (i + 3) + 1);
+                    n++;
+                    lol[0].first++;
+                    fr[lol[0].second]++;
+                }
+            }
+        }
+    }
+   
+  
+    if(lol[0].first == lol[1].first && lol[1].first == lol[2].first){
+        cout << ans.size() << '\n';
+        for(auto i : ans){
+            cout << i << '\n';
+        }
+        return;
+    }
+
+
+    for(int i = 1; i < n; i++){
+        if(s[i] == lol[2].second && s[i] != s[i + 1]){
+            for(int j = fr[s[i + 1]]; j < fr[s[i]]; j++){
+                ans.push_back(i);
+                ans.push_back(i);
+            }
+
+            cout << ans.size() << '\n';
+            for(auto i : ans){
+                cout << i << '\n';
+            }
+            return;
+        }else if(s[i + 1] == lol[2].second && s[i]!=s[i+1]){
+            int cnt = 0;
+            for(int j = fr[s[i]]; j < fr[s[i + 1]]; j++){
+                ans.push_back(i + cnt);
+                cnt++;
+                ans.push_back(i + cnt);
+                cnt++;
+            }
+            cout << ans.size() << '\n';
+            for(auto i : ans){
+                cout << i << '\n';
+            }
+            return;
+        }
+    }
+    cout << -1 << '\n';
+    return;
+}
+```
+
 
