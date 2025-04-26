@@ -388,11 +388,11 @@ Altă soluție este următoarea:
 
 Vom pune pe cele $M$ poziții doar multiplii de $K$, astfel se formează $\left\lfloor\frac{N}{K} \right\rfloor^M$ șiruri posibile, dintre care scădem $f(K \cdot Q), Q \geq 1$.
 
-$$ f(K) = M^{\left\lfloor \frac{N}{K} \right\rfloor} - \sum_{K \mid i} f(i) $$
+$$ f(K) = \left\lfloor\frac{N}{K} \right\rfloor^M - \sum_{K \mid i} f(i) $$
 
-$$ = M^{\left\lfloor \frac{N}{K} \right\rfloor} - \sum_{i=1}^{N} f(i) \cdot [K \mid i] $$ 
+$$ = \left\lfloor\frac{N}{K} \right\rfloor^M - \sum_{i=1}^{N} f(i) \cdot [K \mid i] $$ 
 
-$$ = M^{\left\lfloor \frac{N}{K} \right\rfloor} - \sum_{i=1}^{\frac{N}{K}} f(K \cdot i) $$
+$$ = \left\lfloor\frac{N}{K} \right\rfloor^M - \sum_{i=1}^{\frac{N}{K}} f(K \cdot i) $$
 
 Complexitatea devine:
 
@@ -406,8 +406,6 @@ $$ = \mathcal{O}(N\left(\log{N} + \log{M}\right)) $$
 
 $$ = \mathcal{O}(N\log{(MN)}) $$
 
-Putem precalcula puterile lui $M$, obținem astfel $\mathcal{O}(N \log{N})$.
-Ambele iau 100 puncte.
 
 ### Problema [cntgcd](https://kilonova.ro/problems/372)
 
@@ -415,8 +413,7 @@ Se dau două numere naturale $N$ și $D$. Calculați câte perechi de numere $A$
 
 Putem să luăm rezultatul de la primul exercițiu, pentru că probleme sunt echivalente. Singura restricție este faptul că perechea $(A,B) = (B,A)$, dar putem efectiv să împărțim rezultatul la 2.
 
-$$ ans = \frac{\sum_{d=1}^{\frac{N}{D}} \mu(d) \cdot \left(\frac{N}{dD}\right)^2
-+ 1}{2} $$
+$$ ans = \frac{\sum_{d=1}^{\frac{N}{D}} \mu(d) \cdot \left(\frac{N}{dD}\right)^2 + 1}{2} $$
 
 Soluția ia undeva la 45 puncte, datorită faptului că $D \leq N \leq 10^9$.
 
