@@ -238,17 +238,17 @@ void solve(){
 
 ## #7 A. Common Multiple (Codeforces 1019 DIV2)
 
-### Enunt
+### Enunț
 
-Un sir $x_1, x_2, \dots, x_n$ se numeste bun, daca exista alt sir $y_1,y_2, \dots, y_n$ cu elemente distincte, astfel incat $x_i \cdot y_i = x_j \cdot y_j$, oricare ar fi $i$ si $j$.
+Un șir $x_1, x_2, \dots, x_n$ se numește bun, dacă există alt șir $y_1, y_2, \dots, y_n$ cu elemente distincte, astfel încât $x_i \cdot y_i = x_j \cdot y_j$, oricare ar fi $i$ și $j$.
 
-### Cerinta
+### Cerință
 
-Se da un vector $a_1,a_2, \dots, a_n$, aflat cel mai lung subsir care este bun
+Se dă un vector $a_1, a_2, \dots, a_n$. Aflați cel mai lung subșir care este bun.
 
-### Solutie
+### Soluție
 
-Daca sirul $y$ are elemente distincte, presupune ca si sirul $x$ sa aibe elemente distincte. Cum oricare sir de numere are un multiplu comun (peste toate valorile), rezulta ca este suficient sa verificam daca si sirul $x$ are elemente distincte. Solutie, deci, constituie aflarea subsirului maximal cu elemente distincte din vector, adica numarul de elemente distincte din vector
+Dacă șirul $y$ are elemente distincte, presupunem ca și șirul $x$ să aibă elemente distincte. Cum oricare șir de numere are un multiplu comun (peste toate valorile), rezultă că este suficient să verificăm dacă și șirul $x$ are elemente distincte. Soluția, deci, constă în aflarea subșirului maximal cu elemente distincte din vector, adică numărul de elemente distincte din vector.
 
 ```cpp
 void solve(){
@@ -257,7 +257,7 @@ void solve(){
     cin >> n;
     vector<int> fr(n + 1);
     int cnt = 0;
-    for(int i = 1,x; i <= n; i++){
+    for(int i = 1, x; i <= n; i++){
         cin >> x;
         cnt += (++fr[x] == 1);
     }
@@ -269,32 +269,32 @@ void solve(){
 
 ## #8 B. Lady Bug (Codeforces 1014 DIV2)
 
-### Enunt
+### Enunț
 
-Se dau doua siruri de caractere ($a$ si $b$) de lungime $n$, ambele continand doar $0$ si $1$. Se pot face urmatoarele doau operatii:
-* $swap(a_i,b_{i-1})$
-* $swap(b_i,a_{i-1})$
+Se dau două șiruri de caractere ($a$ și $b$) de lungime $n$, ambele conținând doar $0$ și $1$. Se pot face următoarele două operații:
+* $swap(a_i, b_{i-1})$
+* $swap(b_i, a_{i-1})$
 
-### Cerinta
+### Cerință
 
-Aflati daca putem sa facem sirul $a$ egal cu $0$ folosind un numar oarecare de operatii.
+Aflați dacă putem să facem șirul $a$ egal cu $0$, folosind un număr oarecare de operații.
 
-### Solutie
+### Soluție
 
-Cum putem da swap doar pe diagonala, ne vom forma doua multimi care actioneaza complet diferit una fata de cealalta:
+Cum putem da swap doar pe diagonală, ne vom forma două mulțimi care acționează complet diferit una față de cealaltă:
 
 $$ a : \ \  \color{blue}0 \color{#FF3333}1 \color{blue}0 \color{#FF3333}0 \color{blue}0 \color{#FF3333}1 $$
 
 $$ b : \ \  \color{#FF3333}0 \color{blue}1 \color{#FF3333}0 \color{blue}1 \color{#FF3333}1 \color{blue}1 $$
 
-Putem da swap doar daca au aceeasi culoare. Atunci, ne ramane sa vedem cate $0$ - uri se afla in fiecare multime, si sa comparam numarul cu cate pozitii se regasesc in sirul $a$
+Putem da swap doar dacă au aceeași culoare. Atunci, ne rămâne să vedem câte $0$-uri se află în fiecare mulțime și să comparăm numărul cu câte poziții se regăsesc în șirul $a$.
 
 ```cpp
 void solve(){
 
     int n;
     cin >> n;
-    string a,b;
+    string a, b;
     cin >> a >> b;
     a = '.' + a;
     b = '.' + b;
@@ -302,12 +302,12 @@ void solve(){
     vector<int> fr(2);
 
     for(int i = 1; i <= n; i++){
-        fr[i%2] += (a[i] == '0');
-        fr[(i%2)^1] += (b[i] == '0');
+        fr[i % 2] += (a[i] == '0');
+        fr[(i % 2) ^ 1] += (b[i] == '0');
     }
-    if(fr[1] >= (n + 1)/2 && fr[0] >= (n/2)){
+    if(fr[1] >= (n + 1) / 2 && fr[0] >= (n / 2)){
         cout << "YES" << '\n';
-    }else{
+    } else {
         cout << "NO" << '\n';
     }
 }
