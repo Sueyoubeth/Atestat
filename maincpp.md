@@ -233,6 +233,83 @@ void solve(){
 }
 ```
 
+<br>
+<br>
 
+## #7 A. Common Multiple (Codeforces 1019 DIV2)
 
+### Enunt
+
+Un sir $x_1, x_2, \dots, x_n$ se numeste bun, daca exista alt sir $y_1,y_2, \dots, y_n$ cu elemente distincte, astfel incat $x_i \cdot y_i = x_j \cdot y_j$, oricare ar fi $i$ si $j$.
+
+### Cerinta
+
+Se da un vector $a_1,a_2, \dots, a_n$, aflat cel mai lung subsir care este bun
+
+### Solutie
+
+Daca sirul $y$ are elemente distincte, presupune ca si sirul $x$ sa aibe elemente distincte. Cum oricare sir de numere are un multiplu comun (peste toate valorile), rezulta ca este suficient sa verificam daca si sirul $x$ are elemente distincte. Solutie, deci, constituie aflarea subsirului maximal cu elemente distincte din vector, adica numarul de elemente distincte din vector
+
+```cpp
+void solve(){
+
+    int n;
+    cin >> n;
+    vector<int> fr(n + 1);
+    int cnt = 0;
+    for(int i = 1,x; i <= n; i++){
+        cin >> x;
+        cnt += (++fr[x] == 1);
+    }
+    cout << cnt << '\n';
+}
+```
+<br>
+<br>
+
+## #8 B. Lady Bug (Codeforces 1014 DIV2)
+
+### Enunt
+
+Se dau doua siruri de caractere ($a$ si $b$) de lungime $n$, ambele continand doar $0$ si $1$. Se pot face urmatoarele doau operatii:
+* $swap(a_i,b_{i-1}$
+* $swap(b_i,a_{i-1}$
+
+### Cerinta
+
+Aflati daca putem sa facem sirul $a$ egal cu $0$ folosind un numar oarecare de operatii.
+
+### Solutie
+
+Cum putem da swap doar pe diagonala, ne vom forma doua multimi care acctioneaza complet diferit una fata de cealalta:
+
+$$ a : \ \  \color{cyan}0 \color{#FF3333}1 \color{cyan}0 \color{#FF3333}0 \color{cyan}0 \color{#FF3333}1 $$
+
+$$ b : \ \  \color{#FF3333}0 \color{cyan}1 \color{#FF3333}0 \color{cyan}1 \color{#FF3333}1 \color{cyan}1 $$
+
+Putem da swap doar daca au aceeasi culoare. Atunci, ne ramane sa vedem cate $0$ - uri se afla in fiecare multime, si sa comparam numarul cu cate pozitii se regasesc in sirul $a$
+
+```cpp
+void solve(){
+
+    int n;
+    cin >> n;
+    string a,b;
+    cin >> a >> b;
+    a = '.' + a;
+    b = '.' + b;
+
+    vector<int> fr(2);
+
+    for(int i = 1; i <= n; i++){
+        fr[i%2] += (a[i] == '0');
+        fr[(i%2)^1] += (b[i] == '0');
+    }
+    if(fr[1] >= (n + 1)/2 && fr[0] >= (n/2)){
+        cout << "YES" << '\n';
+    }else{
+        cout << "NO" << '\n';
+    }
+}
+```
 
