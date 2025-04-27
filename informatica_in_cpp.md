@@ -1,4 +1,4 @@
-<h1 style="text-align:center;">Informtica în cpp</h1>
+<h1 style="text-align:center;">Informatica în cpp</h1>
 
 $\newline$
 
