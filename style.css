@@ -8,6 +8,9 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+code, pre {
+  font-size: 1em !important;
+}
 
 blockquote {
   border: 1px solid #ccc;
@@ -93,8 +96,3 @@ th {
   background-color: #f0f0f0;
 }
 
-@media (max-width: 600px) {
-  code, pre {
-    font-size: 0.75em;
-  }
-}
