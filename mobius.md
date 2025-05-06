@@ -243,9 +243,8 @@ indicatorul lui Euler și funcția Möbius.
 
 Fie $g(n)$ = $\sum_{d\mid n} f(d)$. Inversiunea lui Möbius ne spune:
 
-\[
-    f(n) = \sum_{d\mid n} g(d) \cdot \mu \left(\frac{n}{d}\right)
-\]
+
+   $$ f(n) = \sum_{d\mid n} g(d) \cdot \mu \left(\frac{n}{d}\right) $$
 
 Cu toate astea, o proprietate mai importantă este $\sum_{d\mid n} \mu(d) =
 U(n)$. Ceea ce sugerează expresia este că pentru oricare număr natural $n$ suma
@@ -259,8 +258,7 @@ Rezolvare: Noi trebuie să calculăm $\sum_{i=1}^{n} \sum_{j=1}^{n}
 [\operatorname{cmmdc}(i, j) = 1]$. Ne putem folosi de proprietatea de mai sus și
 să scriem relația astfel:
 
-$$ \sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{d \mid \operatorname{cmmdc}(i,j)} \mu(d)
-$$
+$$ \sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{d \mid \operatorname{cmmdc}(i,j)} \mu(d) $$
 
 Iterăm prin toate numerele $\leq n$ în loc de divizorii lui $n$ și obținem
 
