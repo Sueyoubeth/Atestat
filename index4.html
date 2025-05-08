@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trie</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div id="markdown-content"></div>
+  
+  <script>
+    fetch('trie.md')
+      .then(res => res.text())
+      .then(markdown => {
+        const html = marked.parse(markdown);
+        document.getElementById('markdown-content').innerHTML = html;
+
+    
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      });
+  </script>
+</body>
+</html>
