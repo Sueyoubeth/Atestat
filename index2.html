@@ -26,7 +26,7 @@
   <div id="markdown-content"></div>
   
   <script>
-    fetch('https://raw.githubusercontent.com/Sueyoubeth/Atestat/refs/heads/main/bitset.md')
+    fetch('bitset.md')
       .then(res => res.text())
       .then(markdown => {
         const html = marked.parse(markdown);
