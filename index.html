@@ -26,7 +26,7 @@
   <div id="markdown-content"></div>
   
   <script>
-    fetch('https://raw.githubusercontent.com/Sueyoubeth/Atestat/refs/heads/main/informatica_in_cpp.md')
+    fetch('informatica_in_cpp.md')
       .then(res => res.text())
       .then(markdown => {
         const html = marked.parse(markdown);
@@ -60,6 +60,20 @@
     <h3>Noțiuni introductive</h3>
     <p> În teoria numerelor, o funcție aritmetică este o funcție $f(n) : \mathbb{N} \to \mathbb{C}$. O funcție aritmetică exprimă proprietăți aritmetice pentru $n$. </p>
     <div class="fade"></div>
+  </div>
+
+  <div class="card" onclick="location.href='index4.html'">
+    <h2>Trie</h2>
+    <h3>Ce este un Trie</h3>
+    <p> Un trie (sau arbore de prefixe) este un _arbore de căutare $k$-ar_ (un arbore cu
+      rădăcină unde fiecare nod are maxim $k$ fii), reprezentând un mod unic de a
+      memora informațiile, numite și _chei_. </p>
+    <div class="fade"></div>
+
+   
+
+
+
   </div>
 
 </body>
