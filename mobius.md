@@ -2,7 +2,8 @@
 
 <br>
 <br>
- 
+
+
 ## Noțiuni introductive 
 
 În teoria numerelor, o funcție aritmetică este o funcție $f(n) : \mathbb{N} \to
@@ -258,7 +259,8 @@ Rezolvare: Noi trebuie să calculăm $\sum_{i=1}^{n} \sum_{j=1}^{n}
 [\operatorname{cmmdc}(i, j) = 1]$. Ne putem folosi de proprietatea de mai sus și
 să scriem relația astfel:
 
-$$ \sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{d \mid \operatorname{cmmdc}(i,j)} \mu(d) $$
+$$ \sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{d \mid \operatorname{cmmdc}(i,j)} \mu(d)
+$$
 
 Iterăm prin toate numerele $\leq n$ în loc de divizorii lui $n$ și obținem
 
