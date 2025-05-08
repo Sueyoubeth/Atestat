@@ -26,7 +26,10 @@ Algoritmul rulează în $O(N log(N) \cdot \text{nr perechi})$. După timpul de e
 <br>
 ## #2 Festival (ONI 2025 clasele 11-12)
 
+$A(X_i, X_i \pm T_i)$
 ### Enunț
+
+
 
 Se dau $N$ festivale. Al $i$ -lea începe de la momentul $T_i$, de pe poziția $X_i$ și îți aduce o satisfacție de $S_i$. 
 
@@ -52,6 +55,24 @@ $|X_i - X_j| \leq T_j - T_i \rightarrow X_i - X_j \leq T_i - T_j \rightarrow X_i
 $|X_i - X_j| \leq T_j - T_i \rightarrow X_j - X_i \leq T_i - T_j \rightarrow X_j +  T_j \leq X_i + T_i$.
 
 În ambele cazuri, ne vom forma puncte de genul $(X_i, X_i - T_i)$, respectiv $(X_i, X_i + T_i)$. De unde deducem că punctul $j$ influențează punctul $i$ doar dacă este strict mai mic sau strict mai mare ca punctul $i$. (adică $X_j < X_i$ și $X_i - T_i \leq X_j - T_j$, sau invers) $\newline$
+
+<style>
+  figure {
+    text-align: center;
+    margin: 0.5em 0;
+  }
+
+  figcaption {
+    font-size: 1em;
+    
+  }
+</style>
+<figure markdown="span">
+<img src="Untitled.png" width=300px>
+<figcaption>Dacă ne fixăm punctul A, relevante sunt doar punctele hașurate </figcaption>
+</figure>
+
+
 Atunci noi trebuie să suportăm update-uri de genul : "adaugă punctul $i$ cu un cost $x$", și queriuri de tipul: "află costul maxim dintr-o submatrice", lucruri care pot fi implementate folosind Arbori indexati binar 2D (sau **aib2D**). Pentru că memoria e prea mare, trebuie sa facem niște trucuri pentru a o reduce la $N \cdot log^2 N$.
 <br>
 <br>
@@ -89,13 +110,40 @@ Observația crucială este că, dacă ne fixăm capătul drept al intervalulul, 
 
 Se dă un graf conex cu $N$ noduri și $M$ muchii.
 
+<style>
+  figure {
+    text-align: center;
+    margin: 0.5em 0;
+  }
+
+  figcaption {
+    font-size: 1em;
+    
+  }
+</style>
+<figure markdown="span">
+<img src="graf1.png" width=200px>
+<figcaption>Exemplu pentru $N$ = $5$, $M$ = $6$</figcaption>
+</figure>
+
 ### Cerință
 
 Trebuie să etichetăm fiecare muchie cu un număr natural de la $1$ la $M$, astfel încât muchiile să aibă etichete diferite, iar pentru fiecare nod cu grad mai mare ca $1$, **c.m.m.d.c**-ul etichetelor muchiilor incidente trebuie să fie $1$.
 
 ### Soluție
 
-Voi nota  **c.m.m.d.c** cu **gcd**. Știm că $gcd(a,b)  \ \ = \ \  gcd(a,a-b)$, pentru oricare $a > b$, de unde deducem că $gcd(a + 1, a) \ \ = \ \  gcd(a + 1, 1)  \ \ =  \ \ 1$. Acest lucru ne motivează să punem cât mai multe etichete consecutive cu putință. Putem să realizăm asta cu un simplu **dfs**.
+Voi nota  **c.m.m.d.c** cu **gcd**. Știm că $gcd(a,b)   =   gcd(a,a-b)$, pentru oricare $a > b$, de unde deducem că $gcd(a + 1, a)  =   gcd(a + 1, 1)  =   1$. Acest lucru ne motivează să punem cât mai multe etichete consecutive cu putință. Putem să realizăm asta cu un simplu **dfs**.
+
+### Explicație 
+
+Odată ce intrăm într-un nod, sunt două variante:
+
+* Nodul are gradul $1  \rightarrow$ ne vom întoarce de unde am venit.
+* Nodul are grad mai mare ca $1  \rightarrow$ vom ieși pe altă muchie nemarcată încă.
+
+<figure markdown="span">
+<img src="graf2.png" width=200px>
+</figure>
 
 ### Code c++
 ```cpp
@@ -218,6 +266,18 @@ Mint interpolate(int k, ll n){
     return ans;
 }
 ```
+
+  
+<h3 style="text-align: center;  display: block; margin: auto; position: relative;">Un tutorial bun</h3>
+<br>
+<a href="https://www.youtube.com/watch?v=bzp_q7NDdd4" target="_blank" style="text-align: center; display: block; margin: auto; position: relative;">
+   
+  <img src="https://img.youtube.com/vi/bzp_q7NDdd4/0.jpg" alt="Video thumbnail" style="width: 560px; height: 315px;">
+  <img src="https://img.icons8.com/ios-filled/100/ffffff/play--v1.png" alt="Play" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; opacity: 0.8;">
+</a>
+
+
+<br>
 
 Soluția finală:
 
@@ -554,5 +614,4 @@ void solve(){
     return;
 }
 ```
-
 
